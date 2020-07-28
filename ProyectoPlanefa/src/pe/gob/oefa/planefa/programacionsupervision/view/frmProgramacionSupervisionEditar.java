@@ -5,19 +5,15 @@
  */
 package pe.gob.oefa.planefa.programacionsupervision.view;
 
-import View.PlanefaSingleton;
-import View.Util;
-import java.util.List;
-import javax.swing.JTextField;
-import org.bson.Document;
-import pe.gob.oefa.planefa.bo.actividad.Actividad;
+
 import pe.gob.oefa.planefa.bo.actividad.ActividadSupervision;
 import pe.gob.oefa.planefa.bo.catalogo.ActividadOperativa;
 import pe.gob.oefa.planefa.bo.catalogo.ObjetoSupervision;
 import pe.gob.oefa.planefa.bo.catalogo.Sector;
 import pe.gob.oefa.planefa.bo.catalogo.UnidadMedida;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
-import pe.gob.oefa.planefa.mongodb.MongoDatabaseCliente;
+import pe.gob.oefa.planefa.resources.PlanefaSingleton;
+import pe.gob.oefa.planefa.resources.PlanefaUtils;
 
 /**
  *
@@ -26,9 +22,42 @@ import pe.gob.oefa.planefa.mongodb.MongoDatabaseCliente;
 public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
 
     private Planefa planefa;
-    public frmProgramacionSupervisionEditar() {
+    private ActividadSupervision actividad;
+    private boolean editar;
+    private String titulo;
+    private frmProgramacionSupervision formSupervision;
+    
+    public frmProgramacionSupervisionEditar(Object arg, javax.swing.JFrame supervision) {
         initComponents();
         this.planefa = PlanefaSingleton.getInstance();
+        
+        this.editar = false;
+        this.titulo = "Registrar actividad";
+        
+        if(arg!=null){
+            this.editar = true;
+            this.titulo = "Editar actividad";
+            actividad = (ActividadSupervision)arg;
+            this.txtEnero.setText(actividad.getProgramacionEnero().toString());
+            this.txtFebrero.setText(actividad.getProgramacionFebrero().toString());
+            this.txtMarzo.setText(actividad.getProgramacionMarzo().toString());
+            this.txtAbril.setText(actividad.getProgramacionAbril().toString());
+            this.txtMayo.setText(actividad.getProgramacionMayo().toString());
+            this.txtJunio.setText(actividad.getProgramacionJunio().toString());
+            this.txtJulio.setText(actividad.getProgramacionJulio().toString());
+            this.txtAgosto.setText(actividad.getProgramacionAgosto().toString());
+            this.txtSeptiembre.setText(actividad.getProgramacionSeptiembre().toString());
+            this.txtOctubre.setText(actividad.getProgramacionOctubre().toString());
+            this.txtNoviembre.setText(actividad.getProgramacionNoviembre().toString());
+            this.txtDiciembre.setText(actividad.getProgramacionDiciembre().toString());
+            this.txtPresupuesto.setText(actividad.getPresupuestoAnual().toString());
+        }
+        
+        if(supervision!=null){
+            this.formSupervision=(frmProgramacionSupervision)supervision;
+        }
+        
+        this.lblEditarSupervision.setText(titulo);
     }
 
     /**
@@ -80,6 +109,8 @@ public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
         txtSeptiembre = new javax.swing.JTextField();
         txtAgosto = new javax.swing.JTextField();
         txtJulio = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtPresupuesto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -285,6 +316,8 @@ public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
         txtJulio.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtJulio.setText("2");
 
+        jLabel1.setText("Presupuesto anual");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -298,10 +331,13 @@ public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblEnero, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                                    .addComponent(txtEnero))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(lblEnero, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtEnero, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblFebrero, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
@@ -349,7 +385,11 @@ public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtDiciembre)
                                     .addComponent(lblDiciembre, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))))
-                        .addGap(22, 22, 22))))
+                        .addGap(22, 22, 22))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtPresupuesto)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,7 +428,11 @@ public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
                     .addComponent(txtSeptiembre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAgosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtJulio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -413,7 +457,7 @@ public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -438,21 +482,22 @@ public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
             UnidadMedida unidadMedida = new UnidadMedida("400", "Informe de Supervisión");
 
             ActividadSupervision actividad = new ActividadSupervision(actividadOperativa, sector, objetoSupervision, unidadMedida);
-            actividad.setProgramacionEnero(Util.convertirAEntero(this.txtEnero));
-            actividad.setProgramacionFebrero(Util.convertirAEntero(this.txtFebrero));
-            actividad.setProgramacionMarzo(Util.convertirAEntero(this.txtMarzo));
-            actividad.setProgramacionAbril(Util.convertirAEntero(this.txtAbril));
-            actividad.setProgramacionMayo(Util.convertirAEntero(this.txtMayo));
-            actividad.setProgramacionJunio(Util.convertirAEntero(this.txtJunio));
-            actividad.setProgramacionJulio(Util.convertirAEntero(this.txtJulio));
-            actividad.setProgramacionAgosto(Util.convertirAEntero(this.txtAgosto));
-            actividad.setProgramacionSeptiembre(Util.convertirAEntero(this.txtSeptiembre));
-            actividad.setProgramacionOctubre(Util.convertirAEntero(this.txtOctubre));
-            actividad.setProgramacionNoviembre(Util.convertirAEntero(this.txtNoviembre));
-            actividad.setProgramacionDiciembre(Util.convertirAEntero(this.txtDiciembre));
+            actividad.setProgramacionEnero(PlanefaUtils.convertirAEntero(this.txtEnero));
+            actividad.setProgramacionFebrero(PlanefaUtils.convertirAEntero(this.txtFebrero));
+            actividad.setProgramacionMarzo(PlanefaUtils.convertirAEntero(this.txtMarzo));
+            actividad.setProgramacionAbril(PlanefaUtils.convertirAEntero(this.txtAbril));
+            actividad.setProgramacionMayo(PlanefaUtils.convertirAEntero(this.txtMayo));
+            actividad.setProgramacionJunio(PlanefaUtils.convertirAEntero(this.txtJunio));
+            actividad.setProgramacionJulio(PlanefaUtils.convertirAEntero(this.txtJulio));
+            actividad.setProgramacionAgosto(PlanefaUtils.convertirAEntero(this.txtAgosto));
+            actividad.setProgramacionSeptiembre(PlanefaUtils.convertirAEntero(this.txtSeptiembre));
+            actividad.setProgramacionOctubre(PlanefaUtils.convertirAEntero(this.txtOctubre));
+            actividad.setProgramacionNoviembre(PlanefaUtils.convertirAEntero(this.txtNoviembre));
+            actividad.setProgramacionDiciembre(PlanefaUtils.convertirAEntero(this.txtDiciembre));
+            actividad.setPresupuestoAnual(PlanefaUtils.convertirADouble(this.txtPresupuesto));
             this.planefa.getActividadesSupervision().agregar((ActividadSupervision)actividad.clone());
             //MongoDatabaseCliente.getColeccion("planefa")
-            
+            this.formSupervision.mostrarTabla();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -516,7 +561,7 @@ public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmProgramacionSupervisionEditar().setVisible(true);
+                new frmProgramacionSupervisionEditar(null,null).setVisible(true);
             }
         });
     }
@@ -528,6 +573,7 @@ public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbmSector;
     private javax.swing.JComboBox<String> cbmUnidadMedida;
     private javax.swing.JComboBox<String> cmbActividadOperativa;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
@@ -561,6 +607,7 @@ public class frmProgramacionSupervisionEditar extends javax.swing.JFrame {
     private javax.swing.JTextField txtMayo;
     private javax.swing.JTextField txtNoviembre;
     private javax.swing.JTextField txtOctubre;
+    private javax.swing.JTextField txtPresupuesto;
     private javax.swing.JTextField txtSeptiembre;
     // End of variables declaration//GEN-END:variables
 }

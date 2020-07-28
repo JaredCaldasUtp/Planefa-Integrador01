@@ -6,7 +6,7 @@
 package pe.gob.oefa.planefa.datosgenerales.view;
 
 import pe.gob.oefa.planefa.programacionsupervision.view.frmProgramacionSupervision;
-import View.PlanefaSingleton;
+
 import java.util.Date;
 import pe.gob.oefa.planefa.bo.catalogo.Ambito;
 import pe.gob.oefa.planefa.bo.catalogo.ClasificacionMef;
@@ -16,6 +16,7 @@ import pe.gob.oefa.planefa.bo.catalogo.TipoGobierno;
 import pe.gob.oefa.planefa.bo.catalogo.Ubigeo;
 import pe.gob.oefa.planefa.bo.planefa.Periodo;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
+import pe.gob.oefa.planefa.resources.PlanefaSingleton;
 
 /**
  *

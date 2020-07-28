@@ -5,9 +5,10 @@
  */
 package pe.gob.oefa.planefa.programacionsupervision.view;
 
-import View.PlanefaSingleton;
+
 import pe.gob.oefa.planefa.programacionsancionadora1.view.frmProgramacionSancionadora1;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JTable;
 import org.bson.Document;
 import pe.gob.oefa.planefa.bo.actividad.Actividad;
@@ -17,6 +18,8 @@ import pe.gob.oefa.planefa.bo.catalogo.ObjetoSupervision;
 import pe.gob.oefa.planefa.bo.catalogo.Sector;
 import pe.gob.oefa.planefa.bo.catalogo.UnidadMedida;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
+import pe.gob.oefa.planefa.programacionsupervision.model.SupervisionTableModel;
+import pe.gob.oefa.planefa.resources.PlanefaSingleton;
 
 /**
  *
@@ -25,10 +28,17 @@ import pe.gob.oefa.planefa.bo.planefa.Planefa;
 public class frmProgramacionSupervision extends javax.swing.JFrame {
 
     private Planefa planefa;
+    private SupervisionTableModel supervisionTableModel; 
+    private ActividadSupervision actividadSeleccionada;
+    private SeccionPlanefa seccion = SeccionPlanefa.DATOS_GENERALES;
+    
     public frmProgramacionSupervision() {
         initComponents();
         this.planefa = PlanefaSingleton.getInstance();
+        this.mostrarTabla();
     }
+  
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,12 +56,11 @@ public class frmProgramacionSupervision extends javax.swing.JFrame {
         rbEvaluacionesAmbientales = new javax.swing.JRadioButton();
         rbSancionadora1 = new javax.swing.JRadioButton();
         rbSancionadora2 = new javax.swing.JRadioButton();
-        jPanel5 = new javax.swing.JPanel();
+        panelPrincipal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblActividades = new javax.swing.JTable();
-        lblProgramacionSupervisiones = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
-        btnRefrescar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnSiguiente = new javax.swing.JButton();
         btnAnterior = new javax.swing.JButton();
@@ -136,7 +145,7 @@ public class frmProgramacionSupervision extends javax.swing.JFrame {
                     .addComponent(rbSancionadora2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tblActividades.setBackground(new java.awt.Color(204, 204, 204));
         tblActividades.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -160,50 +169,45 @@ public class frmProgramacionSupervision extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblActividades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblActividadesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblActividades);
 
-        lblProgramacionSupervisiones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblProgramacionSupervisiones.setText("Programación de supervisiones (*) ");
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblTitulo.setText("Programación de supervisiones (*) ");
 
-        btnNuevo.setText("+ NUEVO");
+        btnNuevo.setText("Agregar actividad");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
             }
         });
 
-        btnRefrescar.setText("+ REFRESCAR");
-        btnRefrescar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRefrescarMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addGap(360, 360, 360)
-                .addComponent(lblProgramacionSupervisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRefrescar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProgramacionSupervisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo)
-                    .addComponent(btnRefrescar))
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .addContainerGap())
@@ -256,7 +260,7 @@ public class frmProgramacionSupervision extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -267,7 +271,7 @@ public class frmProgramacionSupervision extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -303,110 +307,119 @@ public class frmProgramacionSupervision extends javax.swing.JFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         
-        frmProgramacionSupervisionEditar registro = new frmProgramacionSupervisionEditar();
-        registro.setVisible(true);                
+        JFrame childFrame = new frmProgramacionSupervisionEditar(null, this); //Creo una instancia de mi otra ventana "childFrame"
+        childFrame.setLocationRelativeTo(null); //Que cuando aparezca la ventana sea en el centro de la pantalla principal
+        childFrame.setResizable(false); //Que no se pueda cambiar el tamaño
+        childFrame.setVisible(true); //Que sea visible            
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        frmProgramacionSancionadora1 abrir = new frmProgramacionSancionadora1();
-        abrir.setVisible(true);
-        this.setVisible(false);
+        irPasoSiguiente();
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
-    
-    private void btnRefrescarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRefrescarMouseClicked
-       try {  
-         
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        this.mostrarTabla();
+    private void tblActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActividadesMouseClicked
         
-    }//GEN-LAST:event_btnRefrescarMouseClicked
+        //Muestra la fila seleccionada para el evento MouseClicked
+        System.out.println("Row selected:"+ this.tblActividades.getSelectedRow());
+        //Obtiene el indice de la fila seleccionada
+        int selectedRow = this.tblActividades.getSelectedRow(); 
+        //Obtiene la Activida desde la  programación sgún el indice de la fila seleccionada
+        this.actividadSeleccionada = (ActividadSupervision)planefa.getActividadesSupervision().getProgramacion().get(selectedRow);
+        
+        //Abre el formulario de edición
+        JFrame childFrame = new frmProgramacionSupervisionEditar(actividadSeleccionada, this); //Creo una instancia de mi otra ventana "childFrame"
+        childFrame.setLocationRelativeTo(null); //Que cuando aparezca la ventana sea en el centro de la pantalla principal
+        childFrame.setResizable(false); //Que no se pueda cambiar el tamaño        
+        childFrame.setVisible(true); //Que sea visible
+    }//GEN-LAST:event_tblActividadesMouseClicked
 
-    private void mostrarTabla(){
+    
+    public void mostrarTabla(){
         try {        
-            List<Actividad> programacion = planefa.getActividadesSupervision().getProgramacion();            
-            String[][] data = new String[programacion.size()][17];
-            int i=0;
-            for(Actividad actividadRow: programacion){
-                ActividadSupervision actividadSupervision = (ActividadSupervision)actividadRow;
-                System.out.println(actividadSupervision.getActividadOperativa().getNombre());
-                System.out.println(actividadSupervision.getSector().getNombre());
-                System.out.println(actividadSupervision.getObjetoSupervision().getNombre());
-                System.out.println(actividadSupervision.getUnidadMedida().getNombre());
-                String rowData[] = {
-                    ""+(i++),
-                    actividadSupervision.getActividadOperativa().getNombre(),
-                    actividadSupervision.getSector().getNombre(),
-                    actividadSupervision.getObjetoSupervision().getNombre(),
-                    actividadSupervision.getUnidadMedida().getNombre(),
-                    actividadSupervision.getProgramacionEnero().toString(),
-                    actividadSupervision.getProgramacionFebrero().toString(),
-                    actividadSupervision.getProgramacionMarzo().toString(),
-                    actividadSupervision.getProgramacionAbril().toString(),
-                    actividadSupervision.getProgramacionMayo().toString(),
-                    actividadSupervision.getProgramacionJunio().toString(),
-                    actividadSupervision.getProgramacionJulio().toString(),
-                    actividadSupervision.getProgramacionAgosto().toString(),
-                    actividadSupervision.getProgramacionSeptiembre().toString(),
-                    actividadSupervision.getProgramacionOctubre().toString(),
-                    actividadSupervision.getProgramacionNoviembre().toString(),
-                    actividadSupervision.getProgramacionDiciembre().toString(),
-                };
-                data[i] = rowData;
-                i++;
-            }
-                          
-            String column[]={"N°","Actividad Operativa","Sector","Objeto de Supervisión", "Unidad de Medida", 
-                "Enero", "Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre",
-                "Meta física anual", "Presupuesto anual"
-            };         
-
-            this.tblActividades = new JTable(data, column);
+            //List<Actividad> programacion = planefa.getActividadesSupervision().getProgramacion();                        
+            supervisionTableModel = new SupervisionTableModel(planefa);
+            this.tblActividades.setModel(supervisionTableModel);
+            //this.tblActividades2.setAutoCreateRowSorter(true);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-            
-         
-            
+        }   
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmProgramacionSupervision.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmProgramacionSupervision.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmProgramacionSupervision.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmProgramacionSupervision.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    public void mostrarSeccionDatosGenerales(){
+        
+    }
+    
+    public void mostrarSeccionSupervision(){
+        
+    }
+    
+    public void mostrarSeccionPAS(){
+        
+    }
+    
+    public void mostrarSeccionEvaluacion(){
+        
+    }
+    
+    public void mostrarSeccionInstrumentosNormativos(){
+        
+    }
+    
+    public void mostrarSeccionResumen(){
+        
+    }
+    
+    private void irPasoSiguiente() {
+        switch (this.seccion) {
+            case DATOS_GENERALES:
+                this.seccion = SeccionPlanefa.SUPERVISIONES;
+                mostrarSeccionSupervision();
+                break;
+            case SUPERVISIONES:
+                this.seccion = SeccionPlanefa.PAS;
+                mostrarSeccionPAS();
+                break;
+            case PAS:
+                this.seccion = SeccionPlanefa.EVALUACIONES;
+                mostrarSeccionEvaluacion();
+                break;
+            case EVALUACIONES:
+                this.seccion = SeccionPlanefa.INSTRUMENTOS_NORMATIVOS;
+                mostrarSeccionInstrumentosNormativos();
+                break;
+            case INSTRUMENTOS_NORMATIVOS:
+                this.seccion = SeccionPlanefa.RESUMEN;
+                mostrarSeccionResumen();
+                break;
+            default:
+                this.seccion = SeccionPlanefa.DATOS_GENERALES;
+                mostrarSeccionDatosGenerales();
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+    }
+    
+    private void irPasoAnterior() {
+        switch (this.seccion) {
+            case DATOS_GENERALES:
+                this.seccion = SeccionPlanefa.SUPERVISIONES;
+                break;
+            case SUPERVISIONES:
+                this.seccion = SeccionPlanefa.PAS;
+                break;
+            case PAS:
+                this.seccion = SeccionPlanefa.EVALUACIONES;
+                break;
+            case EVALUACIONES:
+                this.seccion = SeccionPlanefa.INSTRUMENTOS_NORMATIVOS;
+                break;
+            case INSTRUMENTOS_NORMATIVOS:
+                this.seccion = SeccionPlanefa.RESUMEN;
+                break;
+            default:
+                this.seccion = SeccionPlanefa.DATOS_GENERALES;
+        }
+    }
+    
+    public static void main(String args[]) {    
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmProgramacionSupervision().setVisible(true);
@@ -417,14 +430,13 @@ public class frmProgramacionSupervision extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnRefrescar;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblProgramacionSupervisiones;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel panelPrincipal;
     private javax.swing.JRadioButton rbDatosGenerales;
     private javax.swing.JRadioButton rbEvaluacionesAmbientales;
     private javax.swing.JRadioButton rbSancionadora1;
