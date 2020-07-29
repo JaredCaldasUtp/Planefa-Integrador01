@@ -1,6 +1,5 @@
 package pe.gob.oefa.planefa.resources;
 
-import View.*;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
 
 public class PlanefaSingleton {

@@ -1,6 +1,6 @@
 package pe.gob.oefa.planefa.bo.catalogo;
 
-public abstract class Catalogo {
+public class Catalogo {
     private String codigo;
     private String nombre;
 

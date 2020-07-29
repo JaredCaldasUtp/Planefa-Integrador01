@@ -3,12 +3,13 @@ package pe.gob.oefa.planefa.bo.comportamiento.listarsectores;
 
 import java.util.ArrayList;
 import java.util.List;
+import pe.gob.oefa.planefa.bo.catalogo.Catalogo;
 
 public class ListarSectoresInstrumentoNormativo implements ComportamientoListarSectores{
 
     @Override
-    public List listar() {
-        List lista = new ArrayList();
+    public List<Catalogo> listar() {
+        List<Catalogo> lista = new ArrayList();
         System.out.println("ListarSectoresInstrumentoNormativo...");
         
         return lista;

@@ -1,6 +1,9 @@
 package pe.gob.oefa.planefa.bo.actividades;
 
 import java.util.ArrayList;
+import java.util.List;
+import pe.gob.oefa.planefa.bo.catalogo.Catalogo;
+import pe.gob.oefa.planefa.bo.catalogo.FuncionNormada;
 import pe.gob.oefa.planefa.bo.comportamiento.actualizar.ActualizarInstrumentoNormativo;
 import pe.gob.oefa.planefa.bo.comportamiento.anular.AnularInstrumentoNormativo;
 import pe.gob.oefa.planefa.bo.comportamiento.agregar.AgregarInstrumentoNormativo;
@@ -19,4 +22,14 @@ public class ActividadesInstrumentoNormativo extends Actividades {
         this.comportamientoListarUnidadesMedida = new ListarUnidadesMedidaInstrumentoNormativo();
         this.programacion = new ArrayList<>();                   
     }     
+    
+    public List<Catalogo> listarFunciones(){
+        List<Catalogo> lista = new ArrayList();        
+        int i = 1;
+        lista.add(new FuncionNormada("0"+(i++), "Evaluadora"));
+        lista.add(new FuncionNormada("0"+(i++), "Fiscalizadora - Sancionadora"));
+        lista.add(new FuncionNormada("0"+(i++), "Supervisora"));
+        
+        return lista;
+    }
 }

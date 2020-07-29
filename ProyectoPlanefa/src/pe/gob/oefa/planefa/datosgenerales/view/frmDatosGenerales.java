@@ -5,7 +5,7 @@
  */
 package pe.gob.oefa.planefa.datosgenerales.view;
 
-import pe.gob.oefa.planefa.programacionsupervision.view.frmProgramacionSupervision;
+import pe.gob.oefa.planefa.programacionsupervision.view.FrmPlanefa;
 
 import java.util.Date;
 import pe.gob.oefa.planefa.bo.catalogo.Ambito;
@@ -380,7 +380,7 @@ public class frmDatosGenerales extends javax.swing.JFrame {
       this.planefa.setEfa(efa);
       this.planefa.setPeriodo(periodo);
       
-      frmProgramacionSupervision abrirProgramacionsupervision =  new frmProgramacionSupervision();
+      FrmPlanefa abrirProgramacionsupervision =  new FrmPlanefa();
       abrirProgramacionsupervision.setVisible(true);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 

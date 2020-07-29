@@ -1,5 +1,5 @@
 
-package pe.gob.oefa.planefa.programacionsupervision.view;
+package pe.gob.oefa.planefa.programacionsupervision.model;
 
 public enum SeccionPlanefa {
     DATOS_GENERALES("Datos generales"),

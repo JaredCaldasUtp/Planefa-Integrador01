@@ -22,12 +22,17 @@ public abstract class Actividades {
         
     public Actividad agregar(Actividad actividad){
         Actividad actividadRegistrada = comportamientoAgregar.agregar(actividad);
+        actividadRegistrada.setCorrelativo(this.programacion.size()+1);
         this.programacion.add(actividadRegistrada);
         return actividadRegistrada;
     }
     
     public Actividad actualizar(Actividad actividad){
-        return comportamientoActualizar.actualizar(actividad);
+        Actividad actividadActualizada = comportamientoActualizar.actualizar(actividad);        
+        this.programacion.remove(actividad.getCorrelativo()-1);
+        this.programacion.add(actividadActualizada);
+        this.programacion.sort((o1, o2) -> o1.getCorrelativo().compareTo(o2.getCorrelativo()));
+        return actividadActualizada;
     }
     
     public void anular(Actividad actividad){

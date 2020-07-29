@@ -27,7 +27,7 @@
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
-                  <Component id="lblTitulo" alignment="0" pref="461" max="32767" attributes="0"/>
+                  <Component id="lblTitulo" alignment="0" max="32767" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
                   <Component id="jPanel1" max="32767" attributes="0"/>
               </Group>
@@ -58,10 +58,10 @@
           <Color blue="cc" green="f0" red="f0" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="14" style="0"/>
+          <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Plan anual de actividades 2020 (MUNICIPALIDAD PROVINCIAL 1 - 22012)"/>
+        <Property name="text" type="java.lang.String" value="T&#xed;tulo"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder/>
@@ -84,22 +84,18 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cmbActividadOperativa" max="32767" attributes="0"/>
-                      <Component id="cbmObjetoSupervision" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cbmUnidadMedida" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cmbSector" alignment="1" max="32767" attributes="0"/>
+                      <Component id="cmbAnio" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cmbUnidadMedida" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="lblEditarSupervision" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
-                                  <Component id="lblActividadOperativa" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblSector" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblObjetoSupervision" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblSubtitulo" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
+                              <Component id="lblSector" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblObjetoSupervision" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblUnidadMedida" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="129" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="cbmSector" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -109,53 +105,35 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblEditarSupervision" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lblActividadOperativa" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cmbActividadOperativa" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lblSector" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cbmSector" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <Component id="lblSubtitulo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="lblObjetoSupervision" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cbmObjetoSupervision" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbAnio" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblSector" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cmbSector" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lblUnidadMedida" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cbmUnidadMedida" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <Component id="cmbUnidadMedida" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="78" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblEditarSupervision">
+        <Component class="javax.swing.JLabel" name="lblSubtitulo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Programaci&#xf3;n de supervisiones &gt;&gt; Editar"/>
+            <Property name="text" type="java.lang.String" value="Subt&#xed;tulo"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblActividadOperativa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Actividad operativa *"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmbActividadOperativa">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="SUPERVISI&#xd3;N"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Subt&#xed;tulo"/>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblSector">
           <Properties>
@@ -164,10 +142,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblObjetoSupervision">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Objeto de la supervisi&#xf3;n *"/>
+            <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbmObjetoSupervision">
+        <Component class="javax.swing.JComboBox" name="cmbAnio">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -184,7 +162,7 @@
             <Property name="text" type="java.lang.String" value="Unidad de medida *"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbmUnidadMedida">
+        <Component class="javax.swing.JComboBox" name="cmbUnidadMedida">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -192,14 +170,11 @@
               </StringArray>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbmUnidadMedidaActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbmSector">
+        <Component class="javax.swing.JComboBox" name="cmbSector">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -304,9 +279,9 @@
                                       <Component id="txtFebrero" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lblMarzo" pref="62" max="32767" attributes="0"/>
-                                      <Component id="txtMarzo" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblMarzo" min="-2" pref="62" max="-2" attributes="0"/>
+                                      <Component id="txtMarzo" min="-2" pref="54" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -334,7 +309,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtOctubre" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="lblOctubre" pref="67" max="32767" attributes="0"/>
+                                      <Component id="lblOctubre" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -358,8 +333,8 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtDiciembre" max="32767" attributes="0"/>
                                       <Component id="lblDiciembre" pref="62" max="32767" attributes="0"/>
+                                      <Component id="txtDiciembre" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -369,7 +344,10 @@
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="txtPresupuesto" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="txtPresupuesto" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -510,9 +488,6 @@
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="2"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtJunioActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMayo">
           <Properties>
@@ -525,9 +500,6 @@
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="2"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAbrilActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMarzo">
           <Properties>
@@ -589,6 +561,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPresupuesto">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

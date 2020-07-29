@@ -3,6 +3,7 @@ package pe.gob.oefa.planefa.bo.actividad;
 
 public abstract class Actividad implements Cloneable{
     private String codigo;    
+    private Integer correlativo;
     private Integer programacionEnero;
     private Integer programacionFebrero;
     private Integer programacionMarzo;
@@ -161,6 +162,14 @@ public abstract class Actividad implements Cloneable{
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    public Integer getCorrelativo() {
+        return correlativo;
+    }
+
+    public void setCorrelativo(Integer correlativo) {
+        this.correlativo = correlativo;
     }
     
 }

@@ -4,24 +4,24 @@ package pe.gob.oefa.planefa.programacionsupervision.model;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import pe.gob.oefa.planefa.bo.actividad.Actividad;
-import pe.gob.oefa.planefa.bo.actividad.ActividadSupervision;
+import pe.gob.oefa.planefa.bo.actividad.ActividadPas;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
 
-public class SupervisionTableModel extends AbstractTableModel {
+public class PasTableModel extends AbstractTableModel {
    
     private final String[] columnNames = {
-        "N°", "Actividad Operativa", "Sector", "Objeto de Supervisión", "Unidad de Medida",
+        "N°", "Año", "Sector", "Unidad de Medida",
         "Enero", "Febrero", "Marzo", "Abril", 
         "Mayo", "Junio", "Julio", "Agosto", 
         "Septiembre", "Octubre", "Noviembre", "Diciembre", 
         "Meta física anual", "Presupuesto anual"};
-    private final ArrayList<ActividadSupervision> actividades;
+    private final ArrayList<ActividadPas> actividades;
     
-    public SupervisionTableModel(Planefa planefa) {
+    public PasTableModel(Planefa planefa) {
         actividades = new ArrayList<>();
-        System.out.println("Actividades:"+planefa.getActividadesSupervision().getProgramacion().size());
-        for (Actividad actividadRow : planefa.getActividadesSupervision().getProgramacion()) {
-            ActividadSupervision actividad = (ActividadSupervision) actividadRow;
+        System.out.println("Actividades:"+planefa.getActividadesPas().getProgramacion().size());
+        for (Actividad actividadRow : planefa.getActividadesPas().getProgramacion()) {
+            ActividadPas actividad = (ActividadPas) actividadRow;
             actividades.add(actividad);
         }
     }
@@ -50,81 +50,77 @@ public class SupervisionTableModel extends AbstractTableModel {
                 value = this.actividades.get(rowIndex).getCorrelativo();
                 break;
             case 1:
-                value = this.actividades.get(rowIndex).getActividadOperativa().getNombre();
+                value = this.actividades.get(rowIndex).getAnio();
                 break;
             case 2:
                 value = this.actividades.get(rowIndex).getSector().getNombre();                
                 break;            
             case 3:
-                value = this.actividades.get(rowIndex).getObjetoSupervision().getNombre();
-                break;
-            case 4:
                 value = this.actividades.get(rowIndex).getUnidadMedida().getNombre();
                 break;
-            case 5:
+            case 4:
                 value = this.actividades.get(rowIndex).getProgramacionEnero().toString();
                 break;
-            case 6:
+            case 5:
                 value = this.actividades.get(rowIndex).getProgramacionFebrero().toString();
                 break;
-            case 7:
+            case 6:
                 value = this.actividades.get(rowIndex).getProgramacionMarzo().toString();
                 break;
-            case 8:
+            case 7:
                 value = this.actividades.get(rowIndex).getProgramacionAbril().toString();
                 break;
-            case 9:
+            case 8:
                 value = this.actividades.get(rowIndex).getProgramacionMayo().toString();
                 break;
-            case 10:
+            case 9:
                 value = this.actividades.get(rowIndex).getProgramacionJunio().toString();
                 break;
-            case 11:
+            case 10:
                 value = this.actividades.get(rowIndex).getProgramacionJulio().toString();
                 break;
-            case 12:
+            case 11:
                 value = this.actividades.get(rowIndex).getProgramacionAgosto().toString();
                 break;
-            case 13:
+            case 12:
                 value = this.actividades.get(rowIndex).getProgramacionSeptiembre().toString();
                 break;
-            case 14:
+            case 13:
                 value = this.actividades.get(rowIndex).getProgramacionOctubre().toString();
                 break;
-            case 15:
+            case 14:
                 value = this.actividades.get(rowIndex).getProgramacionNoviembre().toString();
                 break;
-            case 16:
+            case 15:
                 value = this.actividades.get(rowIndex).getProgramacionDiciembre().toString();
                 break;
-            case 17:
+            case 16:
                 value = this.actividades.get(rowIndex).getMetaFisicaAnual().toString();
                 break;
-            case 18:
+            case 17:
                 value = this.actividades.get(rowIndex).getPresupuestoAnual();
                 break;
             default:
                 value = "";
                 break;
-        }        
+        }
         return value;
     }
     
     @Override
-   public String getColumnName(int col) {
-      return this.columnNames[col];
-   }
+    public String getColumnName(int col) {
+       return this.columnNames[col];
+    }
    
     @Override
-   public Class getColumnClass(int col) {
-        switch (col) {
-            case 18:
-                return Double.class;
-            case 1:
-                return String.class;
-            default:
-                return String.class;
-        }
-   }
-    
+    public Class getColumnClass(int col) {
+         switch (col) {
+             case 17:
+                 return Double.class;
+             case 1:
+                 return String.class;
+             default:
+                 return String.class;
+         }
+    }
 }

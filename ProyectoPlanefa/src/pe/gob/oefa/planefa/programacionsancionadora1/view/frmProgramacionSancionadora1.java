@@ -6,7 +6,7 @@
 package pe.gob.oefa.planefa.programacionsancionadora1.view;
 
 import pe.gob.oefa.planefa.programacionsancionadora2.view.frmProgramacionSancionadora2;
-import pe.gob.oefa.planefa.programacionsupervision.view.frmProgramacionSupervision;
+import pe.gob.oefa.planefa.programacionsupervision.view.FrmPlanefa;
 
 /**
  *
@@ -288,7 +288,7 @@ public class frmProgramacionSancionadora1 extends javax.swing.JFrame {
     }//GEN-LAST:event_cbmNuevoActionPerformed
 
     private void cbmAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmAnteriorActionPerformed
-        frmProgramacionSupervision abrirProgramacionsupervision =  new frmProgramacionSupervision();
+        FrmPlanefa abrirProgramacionsupervision =  new FrmPlanefa();
       abrirProgramacionsupervision.setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_cbmAnteriorActionPerformed
