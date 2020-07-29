@@ -84,14 +84,16 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="cmbActividadOperativa" alignment="0" max="32767" attributes="0"/>
                       <Component id="cmbSector" alignment="1" max="32767" attributes="0"/>
-                      <Component id="cmbAnio" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cmbObjetoSupervision" alignment="1" max="32767" attributes="0"/>
                       <Component id="cmbUnidadMedida" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblSubtitulo" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
-                              <Component id="lblSector" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblObjetoSupervision" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSector" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSector1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblUnidadMedida" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -109,16 +111,20 @@
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="lblObjetoSupervision" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cmbAnio" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cmbActividadOperativa" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lblSector" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="cmbSector" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="lblSector1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cmbObjetoSupervision" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lblUnidadMedida" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="cmbUnidadMedida" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="78" max="32767" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -139,10 +145,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblObjetoSupervision">
           <Properties>
-            <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
+            <Property name="text" type="java.lang.String" value="Actividad operativa"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cmbAnio">
+        <Component class="javax.swing.JComboBox" name="cmbActividadOperativa">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -182,6 +188,23 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbObjetoSupervision">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value="SUPERVISI&#xd3;N"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblSector1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Objeto de la supervisi&#xf3;n *"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
