@@ -131,9 +131,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Subt&#xed;tulo"/>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Subt&#xed;tulo"/>
-          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblSector">
           <Properties>

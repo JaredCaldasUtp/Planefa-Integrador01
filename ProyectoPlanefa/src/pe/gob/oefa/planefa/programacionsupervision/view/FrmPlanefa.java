@@ -292,7 +292,7 @@ public class FrmPlanefa extends javax.swing.JFrame {
                 childFrame = new FrmProgramacionActividadesSupervision(null, this); //Creo una instancia de mi otra ventana "childFrame"
                 break;
             case PAS:                
-                childFrame = new FrmProgramacionPas(null, this);
+                childFrame = new FrmProgramacionActividadesPas(null, this);
                 break;
             case EVALUACIONES:                
                 childFrame = new FrmProgramacionActividadesSupervision(null, this);
@@ -330,7 +330,7 @@ public class FrmPlanefa extends javax.swing.JFrame {
                 break;
             case PAS:
                 this.actividadSeleccionada = (ActividadPas)planefa.getActividadesPas().getProgramacion().get(selectedRow);
-                childFrame = new FrmProgramacionPas(actividadSeleccionada, this);
+                childFrame = new FrmProgramacionActividadesPas(actividadSeleccionada, this);
                 break;
             case EVALUACIONES:
                 this.actividadSeleccionada = (ActividadEvaluacion)planefa.getActividadesEvaluacion().getProgramacion().get(selectedRow);
