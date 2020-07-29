@@ -289,16 +289,16 @@ public class FrmPlanefa extends javax.swing.JFrame {
         JFrame childFrame = null;
         switch (this.seccion) {                
             case SUPERVISIONES:                
-                childFrame = new FrmProgramacionSupervision(null, this); //Creo una instancia de mi otra ventana "childFrame"
+                childFrame = new FrmProgramacionActividadesSupervision(null, this); //Creo una instancia de mi otra ventana "childFrame"
                 break;
             case PAS:                
                 childFrame = new FrmProgramacionPas(null, this);
                 break;
             case EVALUACIONES:                
-                childFrame = new FrmProgramacionSupervision(null, this);
+                childFrame = new FrmProgramacionActividadesSupervision(null, this);
                 break;
             case INSTRUMENTOS_NORMATIVOS:                
-                childFrame = new FrmProgramacionSupervision(null, this);
+                childFrame = new FrmProgramacionActividadesSupervision(null, this);
                 break;
         }
         
@@ -326,7 +326,7 @@ public class FrmPlanefa extends javax.swing.JFrame {
         switch (this.seccion) {                
             case SUPERVISIONES:
                 this.actividadSeleccionada = (ActividadSupervision)planefa.getActividadesSupervision().getProgramacion().get(selectedRow);
-                childFrame = new FrmProgramacionSupervision(actividadSeleccionada, this); //Creo una instancia de mi otra ventana "childFrame"
+                childFrame = new FrmProgramacionActividadesSupervision(actividadSeleccionada, this); //Creo una instancia de mi otra ventana "childFrame"
                 break;
             case PAS:
                 this.actividadSeleccionada = (ActividadPas)planefa.getActividadesPas().getProgramacion().get(selectedRow);
@@ -334,11 +334,11 @@ public class FrmPlanefa extends javax.swing.JFrame {
                 break;
             case EVALUACIONES:
                 this.actividadSeleccionada = (ActividadEvaluacion)planefa.getActividadesEvaluacion().getProgramacion().get(selectedRow);
-                childFrame = new FrmProgramacionSupervision(actividadSeleccionada, this);
+                childFrame = new FrmProgramacionActividadesSupervision(actividadSeleccionada, this);
                 break;
             case INSTRUMENTOS_NORMATIVOS:
                 this.actividadSeleccionada = (ActividadInstrumentoNormativo)planefa.getActividadesInstrumentoNormativo().getProgramacion().get(selectedRow);
-                childFrame = new FrmProgramacionSupervision(actividadSeleccionada, this);
+                childFrame = new FrmProgramacionActividadesSupervision(actividadSeleccionada, this);
                 break;
         }
         
