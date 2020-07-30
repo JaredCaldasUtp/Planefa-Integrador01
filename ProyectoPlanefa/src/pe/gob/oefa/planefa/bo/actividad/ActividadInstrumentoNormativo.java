@@ -5,17 +5,17 @@ import pe.gob.oefa.planefa.bo.catalogo.FuncionNormada;
 public class ActividadInstrumentoNormativo extends Actividad{
     private FuncionNormada funcionNormada;
     private String instrumentoNormativo;    
-    private Integer mes;
+    private String mes;
     
     public ActividadInstrumentoNormativo(){}
 
-    public ActividadInstrumentoNormativo(FuncionNormada funcionNormada, String instrumentoNormativo, Integer mes) {
+    public ActividadInstrumentoNormativo(FuncionNormada funcionNormada, String instrumentoNormativo, String mes) {
         this.funcionNormada = funcionNormada;
         this.instrumentoNormativo = instrumentoNormativo;
         this.mes = mes;
     }
 
-    public ActividadInstrumentoNormativo(FuncionNormada funcionNormada, String instrumentoNormativo, Integer mes, Integer programacionEnero, Integer programacionFebrero, Integer programacionMarzo, Integer programacionAbril, Integer programacionMayo, Integer programacionJunio, Integer programacionJulio, Integer programacionAgosto, Integer programacionSeptiembre, Integer programacionOctubre, Integer programacionNoviembre, Integer programacionDiciembre, Double presupuestoAnual) {
+    public ActividadInstrumentoNormativo(FuncionNormada funcionNormada, String instrumentoNormativo, String mes, Integer programacionEnero, Integer programacionFebrero, Integer programacionMarzo, Integer programacionAbril, Integer programacionMayo, Integer programacionJunio, Integer programacionJulio, Integer programacionAgosto, Integer programacionSeptiembre, Integer programacionOctubre, Integer programacionNoviembre, Integer programacionDiciembre, Double presupuestoAnual) {
         super(programacionEnero, programacionFebrero, programacionMarzo, programacionAbril, programacionMayo, programacionJunio, programacionJulio, programacionAgosto, programacionSeptiembre, programacionOctubre, programacionNoviembre, programacionDiciembre, presupuestoAnual);
         this.funcionNormada = funcionNormada;
         this.instrumentoNormativo = instrumentoNormativo;
@@ -43,11 +43,11 @@ public class ActividadInstrumentoNormativo extends Actividad{
         this.instrumentoNormativo = instrumentoNormativo;
     }
 
-    public Integer getMes() {
+    public String getMes() {
         return mes;
     }
 
-    public void setMes(Integer mes) {
+    public void setMes(String mes) {
         this.mes = mes;
     }
 

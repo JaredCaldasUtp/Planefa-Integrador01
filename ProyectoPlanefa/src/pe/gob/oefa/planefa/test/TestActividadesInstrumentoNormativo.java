@@ -14,7 +14,7 @@ public class TestActividadesInstrumentoNormativo {
         
         //Actividad de instrumento normativo        
         FuncionNormada funcionNormada = new FuncionNormada("600", "Monitoreo");                        
-        ActividadInstrumentoNormativo actividad = new ActividadInstrumentoNormativo(funcionNormada, "Resolución que aprueba el instrumento normativo x", 1);
+        ActividadInstrumentoNormativo actividad = new ActividadInstrumentoNormativo(funcionNormada, "Resolución que aprueba el instrumento normativo x", "Enero");
         
         //Agregar actividad de evaluación        
         System.out.println("Agrenado programación de instrumentos normativos a aprobarse");

@@ -295,10 +295,10 @@ public class FrmPlanefa extends javax.swing.JFrame {
                 childFrame = new FrmProgramacionActividadesPas(null, this);
                 break;
             case EVALUACIONES:                
-                childFrame = new FrmProgramacionActividadesSupervision(null, this);
+                childFrame = new FrmProgramacionActividadesEvaluacion(null, this);
                 break;
             case INSTRUMENTOS_NORMATIVOS:                
-                childFrame = new FrmProgramacionActividadesSupervision(null, this);
+                childFrame = new FrmProgramacionActividadesInstrumentoNormativo(null, this);
                 break;
         }
         
@@ -334,11 +334,11 @@ public class FrmPlanefa extends javax.swing.JFrame {
                 break;
             case EVALUACIONES:
                 this.actividadSeleccionada = (ActividadEvaluacion)planefa.getActividadesEvaluacion().getProgramacion().get(selectedRow);
-                childFrame = new FrmProgramacionActividadesSupervision(actividadSeleccionada, this);
+                childFrame = new FrmProgramacionActividadesEvaluacion(actividadSeleccionada, this);
                 break;
             case INSTRUMENTOS_NORMATIVOS:
                 this.actividadSeleccionada = (ActividadInstrumentoNormativo)planefa.getActividadesInstrumentoNormativo().getProgramacion().get(selectedRow);
-                childFrame = new FrmProgramacionActividadesSupervision(actividadSeleccionada, this);
+                childFrame = new FrmProgramacionActividadesInstrumentoNormativo(actividadSeleccionada, this);
                 break;
         }
         

@@ -2,8 +2,14 @@
 package pe.gob.oefa.planefa.programacionsupervision.view;
 
 
+import com.mongodb.Block;
+import com.mongodb.client.MongoCollection;
+import java.util.Arrays;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import org.bson.Document;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
+import pe.gob.oefa.planefa.mongodb.MongoDatabaseCliente;
 import pe.gob.oefa.planefa.resources.PlanefaSingleton;
 
 public class FrmResumen extends javax.swing.JFrame {
@@ -443,10 +449,57 @@ public class FrmResumen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblActividades3MouseClicked
 
+    Block<Document> printBlock = new Block<Document>() {
+          @Override
+          public void apply(final Document document) {
+              System.out.println(document.toJson());
+          }
+      };
+    
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Seguro de enviar su Planefa?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
+            System.out.println("collectionPlanefas:");
+            
+            MongoCollection<Document> collectionEfas = MongoDatabaseCliente.getColeccion("efas");
+        
+            collectionEfas.find().forEach(doc -> printBlock.apply(doc));
+        
+            
+            MongoCollection<Document> collectionPlanefas = MongoDatabaseCliente.getColeccion("planefas");
+            System.out.println("collectionPlanefas:"+collectionPlanefas);
+            collectionPlanefas.find().forEach(doc -> printBlock.apply(doc));
+            
+            Document document = new Document("fechaEnvio", new Date().getTime())
+                    .append("periodo", new Document("anio", this.planefa.getPeriodo().getAnio())
+                            .append("plazoRemisionInicial", new Date().getTime())
+                            .append("plazoRemisionFinal", new Date().getTime())
+                    )
+                    .append("efa", new Document("ruc", this.planefa.getEfa().getRuc())
+                            .append("nombre", planefa.getEfa().getNombre())
+                            .append("ambito", planefa.getEfa().getAmbito().getNombre())
+                            .append("clasificacionMef", planefa.getEfa().getClasificacionMef().getNombre())
+                            .append("oficinaDesconcentrada", planefa.getEfa().getOficinaDesconcentrada().getNombre())
+                    )
+                    .append("programacionSupervision", "")
+                    .append("programacionPas", "")
+                    .append("programacionEvaluacion", "")
+                    .append("programacionInstrumentoNormativo", "")
+                    /*
+                    .append("programacionSupervision", Arrays.asList(this.planefa.getActividadesSupervision().getProgramacion()))
+                    .append("programacionPas", Arrays.asList(this.planefa.getActividadesPas().getProgramacion()))
+                    .append("programacionEvaluacion", Arrays.asList(this.planefa.getActividadesEvaluacion().getProgramacion()))
+                    .append("programacionInstrumentoNormativo", Arrays.asList(this.planefa.getActividadesInstrumentoNormativo().getProgramacion()))
+                    */
+                    ;
+            System.out.println("document:"+document);
+            collectionPlanefas.insertOne(document);
+            
+            collectionPlanefas = MongoDatabaseCliente.getColeccion("planefas");
+            
+            collectionPlanefas.find().forEach(doc -> printBlock.apply(doc));
+            
           FrmDatosGenerales frmDatosGenerales = new FrmDatosGenerales();
           frmDatosGenerales.setVisible(true);
           this.setVisible(false);

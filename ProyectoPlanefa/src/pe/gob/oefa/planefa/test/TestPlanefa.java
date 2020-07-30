@@ -173,7 +173,7 @@ public class TestPlanefa {
         if(1==1){      
             //Instrumento normativo a aprobarse       
             FuncionNormada funcionNormada = new FuncionNormada("600", "Monitoreo");                        
-            ActividadInstrumentoNormativo actividad = new ActividadInstrumentoNormativo(funcionNormada, "Resolución que aprueba el instrumento normativo x", 1);
+            ActividadInstrumentoNormativo actividad = new ActividadInstrumentoNormativo(funcionNormada, "Resolución que aprueba el instrumento normativo x", "Enero");
 
             //Agregar instrumentos normativos a aprobarse    
             System.out.println("");

@@ -14,7 +14,7 @@ public class InstrumentoNormativoTableModel extends AbstractTableModel {
         "Enero", "Febrero", "Marzo", "Abril", 
         "Mayo", "Junio", "Julio", "Agosto", 
         "Septiembre", "Octubre", "Noviembre", "Diciembre", 
-        "Meta física anual", "Presupuesto anual"};
+        "Presupuesto anual"};
     private final ArrayList<ActividadInstrumentoNormativo> actividades;
     
     public InstrumentoNormativoTableModel(Planefa planefa) {
@@ -56,45 +56,84 @@ public class InstrumentoNormativoTableModel extends AbstractTableModel {
                 value = this.actividades.get(rowIndex).getInstrumentoNormativo();                
                 break;            
             case 3:
-                value = this.actividades.get(rowIndex).getProgramacionEnero().toString();
+                System.out.println("rowIndex:"+rowIndex);
+                System.out.println("Mes0:"+this.actividades.get(rowIndex));
+                System.out.println("Mes1:"+this.actividades.get(rowIndex).getMes());
+                System.out.println("Mes2:"+Meses.Enero.getDescription());
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Enero.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 4:
-                value = this.actividades.get(rowIndex).getProgramacionFebrero().toString();
+                System.out.println("Mes1:"+this.actividades.get(rowIndex).getMes());
+                System.out.println("Mes2:"+Meses.Enero.getDescription());
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Febrero.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 5:
-                value = this.actividades.get(rowIndex).getProgramacionMarzo().toString();
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Marzo.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 6:
-                value = this.actividades.get(rowIndex).getProgramacionAbril().toString();
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Abril.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 7:
-                value = this.actividades.get(rowIndex).getProgramacionMayo().toString();
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Mayo.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 8:
-                value = this.actividades.get(rowIndex).getProgramacionJunio().toString();
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Junio.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 9:
-                value = this.actividades.get(rowIndex).getProgramacionJulio().toString();
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Julio.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 10:
-                value = this.actividades.get(rowIndex).getProgramacionAgosto().toString();
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Agosto.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 11:
-                value = this.actividades.get(rowIndex).getProgramacionSeptiembre().toString();
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Septiembre.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 12:
-                value = this.actividades.get(rowIndex).getProgramacionOctubre().toString();
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Octubre.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 13:
-                value = this.actividades.get(rowIndex).getProgramacionNoviembre().toString();
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Noviembre.getDescription()))
+                    value = "X";
+                else
+                    value = "";
                 break;
             case 14:
-                value = this.actividades.get(rowIndex).getProgramacionDiciembre().toString();
-                break;
+                if(this.actividades.get(rowIndex).getMes().equalsIgnoreCase(Meses.Diciembre.getDescription()))
+                    value = "X";
+                else
+                    value = "";
+                break;            
             case 15:
-                value = this.actividades.get(rowIndex).getMetaFisicaAnual().toString();
-                break;
-            case 16:
                 value = this.actividades.get(rowIndex).getPresupuestoAnual();
                 break;
             default:
@@ -112,7 +151,7 @@ public class InstrumentoNormativoTableModel extends AbstractTableModel {
     @Override
     public Class getColumnClass(int col) {
          switch (col) {
-             case 18:
+             case 15:
                  return Double.class;
              case 1:
                  return String.class;

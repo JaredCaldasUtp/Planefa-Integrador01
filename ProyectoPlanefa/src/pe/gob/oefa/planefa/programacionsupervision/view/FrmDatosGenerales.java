@@ -18,7 +18,7 @@ public class FrmDatosGenerales extends javax.swing.JFrame {
     private final Planefa planefa;
     public FrmDatosGenerales() {
         initComponents();
-        this.planefa = PlanefaSingleton.getInstance();    
+        this.planefa = PlanefaSingleton.getNewInstance();    
         this.cargarDataInicial();
                 
         this.lblTitulo.setText("Planefa "+ planefa.getPeriodo().getAnio() + " - "+ this.planefa.getEfa().getNombre());

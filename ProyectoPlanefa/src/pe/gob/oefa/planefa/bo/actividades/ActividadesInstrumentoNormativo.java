@@ -32,4 +32,23 @@ public class ActividadesInstrumentoNormativo extends Actividades {
         
         return lista;
     }
+    
+    public List<Catalogo> listarMeses(){
+        List<Catalogo> lista = new ArrayList();        
+        int i = 1;
+        lista.add(new FuncionNormada("0"+(i++), "Enero"));
+        lista.add(new FuncionNormada("0"+(i++), "Febrero"));
+        lista.add(new FuncionNormada("0"+(i++), "Marzo"));
+        lista.add(new FuncionNormada("0"+(i++), "Abril"));
+        lista.add(new FuncionNormada("0"+(i++), "Mayo"));
+        lista.add(new FuncionNormada("0"+(i++), "Junio"));
+        lista.add(new FuncionNormada("0"+(i++), "Julio"));
+        lista.add(new FuncionNormada("0"+(i++), "Agosto"));
+        lista.add(new FuncionNormada("0"+(i++), "Septiembre"));
+        lista.add(new FuncionNormada("0"+(i++), "Octubre"));
+        lista.add(new FuncionNormada("0"+(i++), "Noviembre"));
+        lista.add(new FuncionNormada("0"+(i++), "Diciembre"));
+        
+        return lista;
+    }
 }
