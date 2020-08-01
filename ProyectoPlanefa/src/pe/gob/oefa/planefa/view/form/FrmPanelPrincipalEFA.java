@@ -24,14 +24,12 @@ import pe.gob.oefa.planefa.view.model.PlanefaTableModel;
 public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
 
     private Efa efa;
-    private String perfil;
     
     private TableModel tableModel;
     private Planefa planefaSeleccionada;
     public FrmPanelPrincipalEFA(Efa arg0) {
         initComponents();
-        if(arg0 != null){
-            perfil="EFA";
+        if(arg0 != null){            
             this.efa=arg0;
         }
         

@@ -56,18 +56,15 @@ public class FrmResumen extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblActividadesSupervision = new javax.swing.JTable();
         lblSubtitulo = new javax.swing.JLabel();
-        panelPrincipal2 = new javax.swing.JPanel();
+        lblSubtitulo2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblActividadesPas = new javax.swing.JTable();
-        lblSubtitulo2 = new javax.swing.JLabel();
-        panelPrincipal1 = new javax.swing.JPanel();
+        lblSubtitulo1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblActividadesEvaluacion = new javax.swing.JTable();
-        lblSubtitulo1 = new javax.swing.JLabel();
-        panelPrincipal3 = new javax.swing.JPanel();
+        lblSubtitulo3 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblActividadesInstrumentoNormativo = new javax.swing.JTable();
-        lblSubtitulo3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(238, 242, 246));
@@ -143,7 +140,7 @@ public class FrmResumen extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(807, Short.MAX_VALUE)
                 .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,8 +191,8 @@ public class FrmResumen extends javax.swing.JFrame {
         lblSubtitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblSubtitulo.setText("Programación de supervisiones");
 
-        panelPrincipal2.setBackground(new java.awt.Color(255, 255, 255));
-        panelPrincipal2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblSubtitulo2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblSubtitulo2.setText("Programación PAS");
 
         tblActividadesPas.setBackground(new java.awt.Color(204, 204, 204));
         tblActividadesPas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -226,34 +223,8 @@ public class FrmResumen extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblActividadesPas);
 
-        lblSubtitulo2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblSubtitulo2.setText("Programación PAS");
-
-        javax.swing.GroupLayout panelPrincipal2Layout = new javax.swing.GroupLayout(panelPrincipal2);
-        panelPrincipal2.setLayout(panelPrincipal2Layout);
-        panelPrincipal2Layout.setHorizontalGroup(
-            panelPrincipal2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipal2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelPrincipal2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
-                    .addGroup(panelPrincipal2Layout.createSequentialGroup()
-                        .addComponent(lblSubtitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panelPrincipal2Layout.setVerticalGroup(
-            panelPrincipal2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipal2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblSubtitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        panelPrincipal1.setBackground(new java.awt.Color(255, 255, 255));
-        panelPrincipal1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblSubtitulo1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblSubtitulo1.setText("Programación de evaluaciones ambientales");
 
         tblActividadesEvaluacion.setBackground(new java.awt.Color(204, 204, 204));
         tblActividadesEvaluacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -284,34 +255,8 @@ public class FrmResumen extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblActividadesEvaluacion);
 
-        lblSubtitulo1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblSubtitulo1.setText("Programación de evaluaciones ambientales");
-
-        javax.swing.GroupLayout panelPrincipal1Layout = new javax.swing.GroupLayout(panelPrincipal1);
-        panelPrincipal1.setLayout(panelPrincipal1Layout);
-        panelPrincipal1Layout.setHorizontalGroup(
-            panelPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipal1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1062, Short.MAX_VALUE)
-                    .addGroup(panelPrincipal1Layout.createSequentialGroup()
-                        .addComponent(lblSubtitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 943, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panelPrincipal1Layout.setVerticalGroup(
-            panelPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipal1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblSubtitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        panelPrincipal3.setBackground(new java.awt.Color(255, 255, 255));
-        panelPrincipal3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblSubtitulo3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblSubtitulo3.setText("Programación de instrumentos normativos");
 
         tblActividadesInstrumentoNormativo.setBackground(new java.awt.Color(204, 204, 204));
         tblActividadesInstrumentoNormativo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -342,32 +287,6 @@ public class FrmResumen extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblActividadesInstrumentoNormativo);
 
-        lblSubtitulo3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblSubtitulo3.setText("Programación de instrumentos normativos");
-
-        javax.swing.GroupLayout panelPrincipal3Layout = new javax.swing.GroupLayout(panelPrincipal3);
-        panelPrincipal3.setLayout(panelPrincipal3Layout);
-        panelPrincipal3Layout.setHorizontalGroup(
-            panelPrincipal3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipal3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelPrincipal3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1062, Short.MAX_VALUE)
-                    .addGroup(panelPrincipal3Layout.createSequentialGroup()
-                        .addComponent(lblSubtitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panelPrincipal3Layout.setVerticalGroup(
-            panelPrincipal3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipal3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblSubtitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
@@ -375,14 +294,16 @@ public class FrmResumen extends javax.swing.JFrame {
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1086, Short.MAX_VALUE)
-                    .addComponent(panelPrincipal1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelPrincipal3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 839, Short.MAX_VALUE))
-                    .addComponent(panelPrincipal2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1065, Short.MAX_VALUE)
+                        .addComponent(lblSubtitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblSubtitulo2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblSubtitulo1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 943, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(lblSubtitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1065, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,14 +311,20 @@ public class FrmResumen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelPrincipal2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelPrincipal3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSubtitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSubtitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSubtitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(216, Short.MAX_VALUE))
         );
 
         jScrollPane5.setViewportView(panelPrincipal);
@@ -409,7 +336,7 @@ public class FrmResumen extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1129, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -422,11 +349,11 @@ public class FrmResumen extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -437,7 +364,9 @@ public class FrmResumen extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 3, Short.MAX_VALUE))
         );
 
         pack();
@@ -583,9 +512,6 @@ public class FrmResumen extends javax.swing.JFrame {
     private javax.swing.JLabel lblSubtitulo3;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panelPrincipal;
-    private javax.swing.JPanel panelPrincipal1;
-    private javax.swing.JPanel panelPrincipal2;
-    private javax.swing.JPanel panelPrincipal3;
     private javax.swing.JTable tblActividadesEvaluacion;
     private javax.swing.JTable tblActividadesInstrumentoNormativo;
     private javax.swing.JTable tblActividadesPas;

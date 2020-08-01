@@ -158,6 +158,7 @@ public class FrmPlanefa extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblActividades);
 
         lblSubtitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblSubtitulo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSubtitulo.setText("Programación de supervisiones (*) ");
 
         btnNuevo.setBackground(new java.awt.Color(32, 76, 153));
@@ -176,14 +177,14 @@ public class FrmPlanefa extends javax.swing.JFrame {
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNuevo)
+                        .addGap(0, 369, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(360, 360, 360)
-                .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnNuevo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

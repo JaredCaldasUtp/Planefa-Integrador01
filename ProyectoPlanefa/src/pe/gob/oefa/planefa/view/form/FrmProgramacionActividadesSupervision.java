@@ -28,7 +28,7 @@ public class FrmProgramacionActividadesSupervision extends javax.swing.JFrame {
         iniciarCatalogos();
                         
         //this.titulo = "Planefa "+ planefa.getPeriodo().getAnio() + " - "+ this.planefa.getEfa().getNombre();
-        this.titulo = SeccionPlanefa.PAS.getDescription();
+        this.titulo = SeccionPlanefa.SUPERVISIONES.getDescription();
                 
         this.editar = false;
         this.subtitulo = "Registrar actividad";
