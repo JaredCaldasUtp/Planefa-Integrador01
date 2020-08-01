@@ -10,7 +10,7 @@ import pe.gob.oefa.planefa.resources.PlanefaUtils;
 public class PlanefaTableModel extends AbstractTableModel {
    
     private final String[] columnNames = {
-        "EFA", "Año","Usuario", "Ambito", "OD Competente", "Estado", "Fecha de envío"};
+        "EFA", "Año", "Ambito", "OD Competente", "Estado", "Fecha de envío"};
     private final List<Planefa> listado;
     
     public PlanefaTableModel(List<Planefa> listado) {

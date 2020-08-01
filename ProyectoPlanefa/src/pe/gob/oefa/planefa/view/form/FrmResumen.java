@@ -4,21 +4,39 @@ package pe.gob.oefa.planefa.view.form;
 
 import com.mongodb.Block;
 import com.mongodb.client.MongoCollection;
-import java.util.Arrays;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 import org.bson.Document;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
 import pe.gob.oefa.planefa.mongodb.MongoDatabaseCliente;
+import pe.gob.oefa.planefa.view.model.EvaluacionTableModel;
+import pe.gob.oefa.planefa.view.model.InstrumentoNormativoTableModel;
+import pe.gob.oefa.planefa.view.model.PasTableModel;
 import pe.gob.oefa.planefa.view.model.PlanefaSingleton;
+import pe.gob.oefa.planefa.view.model.SupervisionTableModel;
 
 public class FrmResumen extends javax.swing.JFrame {
 
     private final Planefa planefa;
+    private TableModel tableModelSupervision; 
+    private TableModel tableModelPas; 
+    private TableModel tableModelEvaluacion; 
+    private TableModel tableModelInstrumentosNormativos; 
     public FrmResumen() {
         initComponents();
         this.planefa = PlanefaSingleton.getInstance();                    
         this.lblTitulo.setText("Planefa "+ planefa.getPeriodo().getAnio() + " - "+ this.planefa.getEfa().getNombre());
+        
+        tableModelSupervision = new SupervisionTableModel(planefa);                    
+        tableModelPas = new PasTableModel(planefa);
+        tableModelEvaluacion = new EvaluacionTableModel(planefa);
+        tableModelInstrumentosNormativos = new InstrumentoNormativoTableModel(planefa);
+        
+        this.tblActividadesSupervision.setModel(tableModelSupervision);
+        this.tblActividadesPas.setModel(tableModelPas);
+        this.tblActividadesEvaluacion.setModel(tableModelEvaluacion);
+        this.tblActividadesInstrumentoNormativo.setModel(tableModelInstrumentosNormativos);
     }
     
     @SuppressWarnings("unchecked")
@@ -36,19 +54,19 @@ public class FrmResumen extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         panelPrincipal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblActividades = new javax.swing.JTable();
+        tblActividadesSupervision = new javax.swing.JTable();
         lblSubtitulo = new javax.swing.JLabel();
         panelPrincipal2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblActividades2 = new javax.swing.JTable();
+        tblActividadesPas = new javax.swing.JTable();
         lblSubtitulo2 = new javax.swing.JLabel();
         panelPrincipal1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblActividades1 = new javax.swing.JTable();
+        tblActividadesEvaluacion = new javax.swing.JTable();
         lblSubtitulo1 = new javax.swing.JLabel();
         panelPrincipal3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblActividades3 = new javax.swing.JTable();
+        tblActividadesInstrumentoNormativo = new javax.swing.JTable();
         lblSubtitulo3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -144,10 +162,10 @@ public class FrmResumen extends javax.swing.JFrame {
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         panelPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tblActividades.setBackground(new java.awt.Color(204, 204, 204));
-        tblActividades.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tblActividades.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        tblActividades.setModel(new javax.swing.table.DefaultTableModel(
+        tblActividadesSupervision.setBackground(new java.awt.Color(204, 204, 204));
+        tblActividadesSupervision.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tblActividadesSupervision.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        tblActividadesSupervision.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "SUPERVISIÓN", "NINGUNO", "RUIDO", "INFORME DE SUPERVISIÓN", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "0", "0", "20", "4,000.00"},
                 {"2", "SUPERVISIÓN", "NINGUNO", "EMISIONES", "INFORME DE SUPERVISIÓN", "0", "1", "0", "2", "0", "0", "0", "1", "2", "0", "0", "0", "6", "2,000.00"},
@@ -166,12 +184,12 @@ public class FrmResumen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblActividades.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblActividadesSupervision.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblActividadesMouseClicked(evt);
+                tblActividadesSupervisionMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblActividades);
+        jScrollPane1.setViewportView(tblActividadesSupervision);
 
         lblSubtitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblSubtitulo.setText("Programación de supervisiones");
@@ -179,10 +197,10 @@ public class FrmResumen extends javax.swing.JFrame {
         panelPrincipal2.setBackground(new java.awt.Color(255, 255, 255));
         panelPrincipal2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tblActividades2.setBackground(new java.awt.Color(204, 204, 204));
-        tblActividades2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tblActividades2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        tblActividades2.setModel(new javax.swing.table.DefaultTableModel(
+        tblActividadesPas.setBackground(new java.awt.Color(204, 204, 204));
+        tblActividadesPas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tblActividadesPas.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        tblActividadesPas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "SUPERVISIÓN", "NINGUNO", "RUIDO", "INFORME DE SUPERVISIÓN", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "0", "0", "20", "4,000.00"},
                 {"2", "SUPERVISIÓN", "NINGUNO", "EMISIONES", "INFORME DE SUPERVISIÓN", "0", "1", "0", "2", "0", "0", "0", "1", "2", "0", "0", "0", "6", "2,000.00"},
@@ -201,12 +219,12 @@ public class FrmResumen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblActividades2.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblActividadesPas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblActividades2MouseClicked(evt);
+                tblActividadesPasMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tblActividades2);
+        jScrollPane3.setViewportView(tblActividadesPas);
 
         lblSubtitulo2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblSubtitulo2.setText("Programación PAS");
@@ -218,7 +236,7 @@ public class FrmResumen extends javax.swing.JFrame {
             .addGroup(panelPrincipal2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPrincipal2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3)
                     .addGroup(panelPrincipal2Layout.createSequentialGroup()
                         .addComponent(lblSubtitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -237,10 +255,10 @@ public class FrmResumen extends javax.swing.JFrame {
         panelPrincipal1.setBackground(new java.awt.Color(255, 255, 255));
         panelPrincipal1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tblActividades1.setBackground(new java.awt.Color(204, 204, 204));
-        tblActividades1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tblActividades1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        tblActividades1.setModel(new javax.swing.table.DefaultTableModel(
+        tblActividadesEvaluacion.setBackground(new java.awt.Color(204, 204, 204));
+        tblActividadesEvaluacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tblActividadesEvaluacion.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        tblActividadesEvaluacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "SUPERVISIÓN", "NINGUNO", "RUIDO", "INFORME DE SUPERVISIÓN", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "0", "0", "20", "4,000.00"},
                 {"2", "SUPERVISIÓN", "NINGUNO", "EMISIONES", "INFORME DE SUPERVISIÓN", "0", "1", "0", "2", "0", "0", "0", "1", "2", "0", "0", "0", "6", "2,000.00"},
@@ -259,12 +277,12 @@ public class FrmResumen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblActividades1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblActividadesEvaluacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblActividades1MouseClicked(evt);
+                tblActividadesEvaluacionMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tblActividades1);
+        jScrollPane2.setViewportView(tblActividadesEvaluacion);
 
         lblSubtitulo1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblSubtitulo1.setText("Programación de evaluaciones ambientales");
@@ -276,7 +294,7 @@ public class FrmResumen extends javax.swing.JFrame {
             .addGroup(panelPrincipal1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1005, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1062, Short.MAX_VALUE)
                     .addGroup(panelPrincipal1Layout.createSequentialGroup()
                         .addComponent(lblSubtitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 943, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -295,10 +313,10 @@ public class FrmResumen extends javax.swing.JFrame {
         panelPrincipal3.setBackground(new java.awt.Color(255, 255, 255));
         panelPrincipal3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tblActividades3.setBackground(new java.awt.Color(204, 204, 204));
-        tblActividades3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tblActividades3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        tblActividades3.setModel(new javax.swing.table.DefaultTableModel(
+        tblActividadesInstrumentoNormativo.setBackground(new java.awt.Color(204, 204, 204));
+        tblActividadesInstrumentoNormativo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tblActividadesInstrumentoNormativo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        tblActividadesInstrumentoNormativo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "SUPERVISIÓN", "NINGUNO", "RUIDO", "INFORME DE SUPERVISIÓN", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "0", "0", "20", "4,000.00"},
                 {"2", "SUPERVISIÓN", "NINGUNO", "EMISIONES", "INFORME DE SUPERVISIÓN", "0", "1", "0", "2", "0", "0", "0", "1", "2", "0", "0", "0", "6", "2,000.00"},
@@ -317,12 +335,12 @@ public class FrmResumen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblActividades3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblActividadesInstrumentoNormativo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblActividades3MouseClicked(evt);
+                tblActividadesInstrumentoNormativoMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(tblActividades3);
+        jScrollPane4.setViewportView(tblActividadesInstrumentoNormativo);
 
         lblSubtitulo3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblSubtitulo3.setText("Programación de instrumentos normativos");
@@ -334,7 +352,7 @@ public class FrmResumen extends javax.swing.JFrame {
             .addGroup(panelPrincipal3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPrincipal3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1005, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1062, Short.MAX_VALUE)
                     .addGroup(panelPrincipal3Layout.createSequentialGroup()
                         .addComponent(lblSubtitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -357,14 +375,13 @@ public class FrmResumen extends javax.swing.JFrame {
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1086, Short.MAX_VALUE)
                     .addComponent(panelPrincipal1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelPrincipal3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelPrincipal2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 839, Short.MAX_VALUE))
+                    .addComponent(panelPrincipal2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelPrincipalLayout.setVerticalGroup(
@@ -392,7 +409,7 @@ public class FrmResumen extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1129, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -433,21 +450,21 @@ public class FrmResumen extends javax.swing.JFrame {
         this.setVisible(false);       
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void tblActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActividadesMouseClicked
+    private void tblActividadesSupervisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActividadesSupervisionMouseClicked
 
-    }//GEN-LAST:event_tblActividadesMouseClicked
+    }//GEN-LAST:event_tblActividadesSupervisionMouseClicked
 
-    private void tblActividades1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActividades1MouseClicked
+    private void tblActividadesEvaluacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActividadesEvaluacionMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblActividades1MouseClicked
+    }//GEN-LAST:event_tblActividadesEvaluacionMouseClicked
 
-    private void tblActividades2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActividades2MouseClicked
+    private void tblActividadesPasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActividadesPasMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblActividades2MouseClicked
+    }//GEN-LAST:event_tblActividadesPasMouseClicked
 
-    private void tblActividades3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActividades3MouseClicked
+    private void tblActividadesInstrumentoNormativoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblActividadesInstrumentoNormativoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblActividades3MouseClicked
+    }//GEN-LAST:event_tblActividadesInstrumentoNormativoMouseClicked
 
     Block<Document> printBlock = new Block<Document>() {
           @Override
@@ -569,9 +586,9 @@ public class FrmResumen extends javax.swing.JFrame {
     private javax.swing.JPanel panelPrincipal1;
     private javax.swing.JPanel panelPrincipal2;
     private javax.swing.JPanel panelPrincipal3;
-    private javax.swing.JTable tblActividades;
-    private javax.swing.JTable tblActividades1;
-    private javax.swing.JTable tblActividades2;
-    private javax.swing.JTable tblActividades3;
+    private javax.swing.JTable tblActividadesEvaluacion;
+    private javax.swing.JTable tblActividadesInstrumentoNormativo;
+    private javax.swing.JTable tblActividadesPas;
+    private javax.swing.JTable tblActividadesSupervision;
     // End of variables declaration//GEN-END:variables
 }

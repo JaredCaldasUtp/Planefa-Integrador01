@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import org.bson.Document;
 import pe.gob.oefa.planefa.bo.catalogo.Efa;
@@ -17,6 +18,7 @@ import pe.gob.oefa.planefa.bo.planefa.EstadoPlanefa;
 import pe.gob.oefa.planefa.bo.planefa.Periodo;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
 import pe.gob.oefa.planefa.mongodb.MongoDatabaseCliente;
+import pe.gob.oefa.planefa.resources.PlanefaUtils;
 import pe.gob.oefa.planefa.view.model.PlanefaTableModel;
 
 public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
@@ -206,6 +208,11 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
         });
 
         btnVerDetalle.setText("Ver detalle");
+        btnVerDetalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerDetalleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -215,7 +222,7 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNombreEfa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,6 +355,10 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
         this.setVisible(false);
         
     }//GEN-LAST:event_btnRemitirPlanefaActionPerformed
+
+    private void btnVerDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDetalleActionPerformed
+        JOptionPane.showMessageDialog(this, "La EFA, "+ planefaSeleccionada.getEfa().getNombre()+", presentó su planefa para el "+planefaSeleccionada.getPeriodo().getAnio()+", con fecha "+PlanefaUtils.dateToString(planefaSeleccionada.getFechaEnvio())+".", "Warning", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnVerDetalleActionPerformed
 
     public static void main(String args[]) {        
         try {
