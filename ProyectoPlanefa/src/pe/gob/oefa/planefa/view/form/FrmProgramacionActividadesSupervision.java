@@ -1,33 +1,34 @@
 
-package pe.gob.oefa.planefa.programacionsupervision.view;
+package pe.gob.oefa.planefa.view.form;
 
 import javax.swing.JOptionPane;
-import pe.gob.oefa.planefa.bo.actividad.ActividadEvaluacion;
+import pe.gob.oefa.planefa.bo.actividad.ActividadSupervision;
 import pe.gob.oefa.planefa.bo.catalogo.ActividadOperativa;
-import pe.gob.oefa.planefa.bo.catalogo.TipoEvaluacion;
+import pe.gob.oefa.planefa.bo.catalogo.ObjetoSupervision;
+import pe.gob.oefa.planefa.bo.catalogo.Sector;
 import pe.gob.oefa.planefa.bo.catalogo.UnidadMedida;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
-import pe.gob.oefa.planefa.programacionsupervision.model.CatalogoComboBoxModel;
-import pe.gob.oefa.planefa.programacionsupervision.model.SeccionPlanefa;
-import pe.gob.oefa.planefa.resources.PlanefaSingleton;
+import pe.gob.oefa.planefa.view.model.CatalogoComboBoxModel;
+import pe.gob.oefa.planefa.view.model.SeccionPlanefa;
+import pe.gob.oefa.planefa.view.model.PlanefaSingleton;
 import pe.gob.oefa.planefa.resources.PlanefaUtils;
 
-public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
+public class FrmProgramacionActividadesSupervision extends javax.swing.JFrame {
 
     private final Planefa planefa;
-    private ActividadEvaluacion actividad;
+    private ActividadSupervision actividad;
     private boolean editar;
     private final String titulo;
     private String subtitulo;
     private FrmPlanefa formPlanefa;
             
-    public FrmProgramacionActividadesEvaluacion(Object arg, javax.swing.JFrame supervision) {
+    public FrmProgramacionActividadesSupervision(Object arg, javax.swing.JFrame supervision) {
         this.initComponents();
         this.planefa = PlanefaSingleton.getInstance();
         iniciarCatalogos();
                         
         //this.titulo = "Planefa "+ planefa.getPeriodo().getAnio() + " - "+ this.planefa.getEfa().getNombre();
-        this.titulo = SeccionPlanefa.EVALUACIONES.getDescription();
+        this.titulo = SeccionPlanefa.PAS.getDescription();
                 
         this.editar = false;
         this.subtitulo = "Registrar actividad";
@@ -35,7 +36,7 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
         if(arg!=null){
             this.editar = true;
             this.subtitulo = "Editar actividad";
-            actividad = (ActividadEvaluacion)arg;
+            actividad = (ActividadSupervision)arg;
             this.txtEnero.setText(actividad.getProgramacionEnero().toString());
             this.txtFebrero.setText(actividad.getProgramacionFebrero().toString());
             this.txtMarzo.setText(actividad.getProgramacionMarzo().toString());
@@ -50,7 +51,8 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
             this.txtDiciembre.setText(actividad.getProgramacionDiciembre().toString());
             this.txtPresupuesto.setText(actividad.getPresupuestoAnual().toString());            
             this.cmbActividadOperativa.setSelectedItem(actividad.getActividadOperativa().getNombre());            
-            this.cmbTipoEvaluacion.setSelectedItem(actividad.getTipoEvaluacion().getNombre());            
+            this.cmbSector.setSelectedItem(actividad.getSector().getNombre());
+            this.cmbObjetoSupervision.setSelectedItem(actividad.getObjetoSupervision().getNombre());            
             this.cmbUnidadMedida.setSelectedItem(actividad.getUnidadMedida().getNombre());
         }
         
@@ -63,11 +65,13 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
     }
         
     private void iniciarCatalogos(){                
-        this.cmbActividadOperativa.setModel(new CatalogoComboBoxModel(this.planefa.getActividadesEvaluacion().listarActividadesOperativas()));
+        this.cmbActividadOperativa.setModel(new CatalogoComboBoxModel(this.planefa.getActividadesSupervision().listarActividadesOperativas()));
         this.cmbActividadOperativa.setSelectedIndex(0);
-        this.cmbTipoEvaluacion.setModel(new CatalogoComboBoxModel(this.planefa.getActividadesEvaluacion().listarTiposEvaluacion()));
-        this.cmbTipoEvaluacion.setSelectedIndex(0);  
-        this.cmbUnidadMedida.setModel(new CatalogoComboBoxModel(this.planefa.getActividadesEvaluacion().listarUnidadesMedida()));
+        this.cmbSector.setModel(new CatalogoComboBoxModel(this.planefa.getActividadesSupervision().listarSectores()));
+        this.cmbSector.setSelectedIndex(0);  
+        this.cmbObjetoSupervision.setModel(new CatalogoComboBoxModel(this.planefa.getActividadesSupervision().listarObjetosSupervision()));
+        this.cmbObjetoSupervision.setSelectedIndex(0);
+        this.cmbUnidadMedida.setModel(new CatalogoComboBoxModel(this.planefa.getActividadesSupervision().listarUnidadesMedida()));
         this.cmbUnidadMedida.setSelectedIndex(0);
     }
    
@@ -83,7 +87,9 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
         cmbActividadOperativa = new javax.swing.JComboBox<>();
         lblUnidadMedida = new javax.swing.JLabel();
         cmbUnidadMedida = new javax.swing.JComboBox<>();
-        cmbTipoEvaluacion = new javax.swing.JComboBox<>();
+        cmbSector = new javax.swing.JComboBox<>();
+        cmbObjetoSupervision = new javax.swing.JComboBox<>();
+        lblSector1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
@@ -129,7 +135,7 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
         lblSubtitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblSubtitulo.setText("Subtítulo");
 
-        lblSector.setText("Tipo de evaluación *");
+        lblSector.setText("Sector *");
 
         lblObjetoSupervision.setText("Actividad operativa");
 
@@ -139,7 +145,11 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
 
         cmbUnidadMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INFORME DE SUPERVISIÓN" }));
 
-        cmbTipoEvaluacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SUPERVISIÓN" }));
+        cmbSector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SUPERVISIÓN" }));
+
+        cmbObjetoSupervision.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SUPERVISIÓN" }));
+
+        lblSector1.setText("Objeto de la supervisión *");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -149,13 +159,15 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmbActividadOperativa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbTipoEvaluacion, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbSector, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbObjetoSupervision, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmbUnidadMedida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblObjetoSupervision)
                             .addComponent(lblSector)
+                            .addComponent(lblSector1)
                             .addComponent(lblUnidadMedida))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -169,15 +181,19 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
                 .addComponent(lblObjetoSupervision)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbActividadOperativa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblSector)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbTipoEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(cmbSector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSector1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbObjetoSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblUnidadMedida)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbUnidadMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -452,11 +468,12 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
             
             if(!this.validarFormulario()) return;
                         
-            ActividadOperativa actividadOperativa = (ActividadOperativa)this.planefa.getActividadesEvaluacion().listarActividadesOperativas().get(this.cmbActividadOperativa.getSelectedIndex()-1);            
-            TipoEvaluacion tipoEvaluacion = (TipoEvaluacion)this.planefa.getActividadesEvaluacion().listarTiposEvaluacion().get(this.cmbTipoEvaluacion.getSelectedIndex()-1);            
-            UnidadMedida unidadMedida = (UnidadMedida)this.planefa.getActividadesEvaluacion().listarUnidadesMedida().get(this.cmbUnidadMedida.getSelectedIndex()-1);
+            ActividadOperativa actividadOperativa = (ActividadOperativa)this.planefa.getActividadesSupervision().listarActividadesOperativas().get(this.cmbActividadOperativa.getSelectedIndex()-1);            
+            Sector sector = (Sector)this.planefa.getActividadesSupervision().listarSectores().get(this.cmbSector.getSelectedIndex()-1);            
+            ObjetoSupervision objetoSupervision = (ObjetoSupervision)this.planefa.getActividadesSupervision().listarObjetosSupervision().get(this.cmbObjetoSupervision.getSelectedIndex()-1);            
+            UnidadMedida unidadMedida = (UnidadMedida)this.planefa.getActividadesSupervision().listarUnidadesMedida().get(this.cmbUnidadMedida.getSelectedIndex()-1);
             
-            ActividadEvaluacion registro = new ActividadEvaluacion(actividadOperativa, tipoEvaluacion, unidadMedida);
+            ActividadSupervision registro = new ActividadSupervision(actividadOperativa, sector, objetoSupervision, unidadMedida);
             registro.setProgramacionEnero(PlanefaUtils.convertirAEntero(this.txtEnero));
             registro.setProgramacionFebrero(PlanefaUtils.convertirAEntero(this.txtFebrero));
             registro.setProgramacionMarzo(PlanefaUtils.convertirAEntero(this.txtMarzo));
@@ -474,9 +491,9 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
             if(editar){
                 registro.setCorrelativo(this.actividad.getCorrelativo());
                 registro.setCodigo(this.actividad.getCodigo());
-                this.planefa.getActividadesEvaluacion().actualizar((ActividadEvaluacion)registro.clone());
+                this.planefa.getActividadesSupervision().actualizar((ActividadSupervision)registro.clone());
             }else{
-                this.planefa.getActividadesEvaluacion().agregar((ActividadEvaluacion)registro.clone());
+                this.planefa.getActividadesSupervision().agregar((ActividadSupervision)registro.clone());
             }
             //MongoDatabaseCliente.getColeccion("planefa")
             this.formPlanefa.mostrarTabla();
@@ -496,10 +513,14 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Seleccione una actividad operativa", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        if(this.cmbTipoEvaluacion.getSelectedIndex()==0){
-            JOptionPane.showMessageDialog(this, "Seleccione un tipo de evaluación", "Warning", JOptionPane.WARNING_MESSAGE);
+        if(this.cmbSector.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(this, "Seleccione un sector", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }        
+        if(this.cmbObjetoSupervision.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(this, "Seleccione un objeto de supervisión", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
         if(this.cmbUnidadMedida.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(this, "Seleccione una unidad de medida", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
@@ -587,270 +608,14 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmProgramacionActividadesEvaluacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProgramacionActividadesSupervision.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmProgramacionActividadesEvaluacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProgramacionActividadesSupervision.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmProgramacionActividadesEvaluacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProgramacionActividadesSupervision.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmProgramacionActividadesEvaluacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProgramacionActividadesSupervision.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1111,7 +876,7 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmProgramacionActividadesEvaluacion(null,null).setVisible(true);
+                new FrmProgramacionActividadesSupervision(null,null).setVisible(true);
             }
         });
     }
@@ -1120,7 +885,8 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cmbActividadOperativa;
-    private javax.swing.JComboBox<String> cmbTipoEvaluacion;
+    private javax.swing.JComboBox<String> cmbObjetoSupervision;
+    private javax.swing.JComboBox<String> cmbSector;
     private javax.swing.JComboBox<String> cmbUnidadMedida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -1140,6 +906,7 @@ public class FrmProgramacionActividadesEvaluacion extends javax.swing.JFrame {
     private javax.swing.JLabel lblOctubre;
     private javax.swing.JLabel lblProgramacion;
     private javax.swing.JLabel lblSector;
+    private javax.swing.JLabel lblSector1;
     private javax.swing.JLabel lblSetiembre;
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;

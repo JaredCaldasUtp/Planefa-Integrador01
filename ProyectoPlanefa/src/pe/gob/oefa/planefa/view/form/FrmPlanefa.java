@@ -1,7 +1,7 @@
-package pe.gob.oefa.planefa.programacionsupervision.view;
+package pe.gob.oefa.planefa.view.form;
 
 
-import pe.gob.oefa.planefa.programacionsupervision.model.SeccionPlanefa;
+import pe.gob.oefa.planefa.view.model.SeccionPlanefa;
 import javax.swing.JFrame;
 import javax.swing.table.TableModel;
 import pe.gob.oefa.planefa.bo.actividad.Actividad;
@@ -10,11 +10,11 @@ import pe.gob.oefa.planefa.bo.actividad.ActividadInstrumentoNormativo;
 import pe.gob.oefa.planefa.bo.actividad.ActividadPas;
 import pe.gob.oefa.planefa.bo.actividad.ActividadSupervision;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
-import pe.gob.oefa.planefa.programacionsupervision.model.EvaluacionTableModel;
-import pe.gob.oefa.planefa.programacionsupervision.model.InstrumentoNormativoTableModel;
-import pe.gob.oefa.planefa.programacionsupervision.model.PasTableModel;
-import pe.gob.oefa.planefa.programacionsupervision.model.SupervisionTableModel;
-import pe.gob.oefa.planefa.resources.PlanefaSingleton;
+import pe.gob.oefa.planefa.view.model.EvaluacionTableModel;
+import pe.gob.oefa.planefa.view.model.InstrumentoNormativoTableModel;
+import pe.gob.oefa.planefa.view.model.PasTableModel;
+import pe.gob.oefa.planefa.view.model.SupervisionTableModel;
+import pe.gob.oefa.planefa.view.model.PlanefaSingleton;
 
 public class FrmPlanefa extends javax.swing.JFrame {
 
@@ -372,7 +372,7 @@ public class FrmPlanefa extends javax.swing.JFrame {
     }
       
     public void mostrarSeccionDatosGenerales(){
-        FrmDatosGenerales frmDatosGenerales = new FrmDatosGenerales();
+        FrmDatosGenerales frmDatosGenerales = new FrmDatosGenerales(planefa.getPeriodo(),planefa.getEfa());
         frmDatosGenerales.setVisible(true);        
         this.setVisible(false);
     }

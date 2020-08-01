@@ -14,6 +14,7 @@ public class Planefa implements Cloneable{
     private Periodo periodo;
     private Efa efa;
     private Date fechaEnvio;
+    private EstadoPlanefa estadoPlanefa;
     private Resolucion resolucionAprobacionPlanefa;
     private Resolucion resolucionAprbacionPoi;
     
@@ -104,4 +105,13 @@ public class Planefa implements Cloneable{
     public ActividadesInstrumentoNormativo getActividadesInstrumentoNormativo() {
         return actividadesInstrumentoNormativo;
     }
+
+    public EstadoPlanefa getEstadoPlanefa() {
+        return estadoPlanefa;
+    }
+
+    public void setEstadoPlanefa(EstadoPlanefa estadoPlanefa) {
+        this.estadoPlanefa = estadoPlanefa;
+    }
+    
 }

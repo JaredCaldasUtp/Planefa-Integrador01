@@ -8,6 +8,10 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.codecs.IntegerCodec;
+import org.bson.codecs.LongCodec;
+import org.bson.codecs.configuration.CodecRegistries;
+import org.bson.codecs.configuration.CodecRegistry;
 
 public class MongoDatabaseCliente {
     
@@ -30,7 +34,7 @@ public class MongoDatabaseCliente {
             .retryWrites(true)
             .build();
         MongoClient mongoClient = MongoClients.create(settings);
-        MongoDatabase database = mongoClient.getDatabase("planefaDB");  
+        MongoDatabase database = mongoClient.getDatabase("planefaDB");         
         return database;
     }
     

@@ -1,5 +1,5 @@
 
-package pe.gob.oefa.planefa.programacionsupervision.view;
+package pe.gob.oefa.planefa.view.form;
 
 
 import java.util.Date;
@@ -11,21 +11,29 @@ import pe.gob.oefa.planefa.bo.catalogo.TipoGobierno;
 import pe.gob.oefa.planefa.bo.catalogo.Ubigeo;
 import pe.gob.oefa.planefa.bo.planefa.Periodo;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
-import pe.gob.oefa.planefa.resources.PlanefaSingleton;
+import pe.gob.oefa.planefa.view.model.PlanefaSingleton;
 
-public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
+public class FrmDatosGenerales extends javax.swing.JFrame {
 
     private final Planefa planefa;
-    public FrmPanelPrincipalEFA() {
+    public FrmDatosGenerales(Periodo arg0, Efa arg1) {
         initComponents();
         this.planefa = PlanefaSingleton.getNewInstance();    
-        this.cargarDataInicial();
-                
+        
+        if(arg0!=null){            
+            this.planefa.setPeriodo(arg0);
+            this.planefa.setEfa(arg1);
+            
+            this.txtNombreEfa.setText( this.planefa.getEfa().getNombre());
+            this.txtAnio.setText( this.planefa.getPeriodo().getAnio().toString());
+            this.txtAmbito.setText( this.planefa.getEfa().getAmbito().getNombre());
+            
+        }
         this.lblTitulo.setText("Planefa "+ planefa.getPeriodo().getAnio() + " - "+ this.planefa.getEfa().getNombre());
     }
     
     public void cargarDataInicial(){
-        
+        /*
         //Periodo
         Periodo periodo = new Periodo(Integer.parseInt(this.txtAnio.getText()), new Date(), new Date());        
         
@@ -36,9 +44,9 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
         ClasificacionMef clasificacionMef = new ClasificacionMef("1300", "A");
         OficinaDesconcentrada oficinaDesconcentrada = new OficinaDesconcentrada("2000", "OD x");                
         Efa efa = new Efa("1000", "20425856214", "Municipalidad Distrital de Surco", ubigeo, ambito, tipoGobierno, clasificacionMef, oficinaDesconcentrada);
-          
-        this.planefa.setEfa(efa);
-        this.planefa.setPeriodo(periodo);
+        */
+                
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -55,7 +63,7 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
         lblAnioPlanefa = new javax.swing.JLabel();
         txtAnio = new javax.swing.JTextField();
         lblTipoEfa = new javax.swing.JLabel();
-        txtAnio1 = new javax.swing.JTextField();
+        txtAmbito = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btnSiguiente = new javax.swing.JButton();
 
@@ -104,8 +112,8 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
 
         lblTipoEfa.setText("Tipo de EFA *");
 
-        txtAnio1.setText("Local");
-        txtAnio1.setEnabled(false);
+        txtAmbito.setText("Local");
+        txtAmbito.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -118,7 +126,7 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
                     .addComponent(lblNombreEfa)
                     .addComponent(lblAnioPlanefa)
                     .addComponent(lblTipoEfa)
-                    .addComponent(txtAnio1)
+                    .addComponent(txtAmbito)
                     .addComponent(txtAnio)
                     .addComponent(txtNombreEfa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE))
                 .addContainerGap())
@@ -139,7 +147,7 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblTipoEfa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAnio1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAmbito, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
@@ -230,18 +238,14 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPanelPrincipalEFA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDatosGenerales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPanelPrincipalEFA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDatosGenerales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPanelPrincipalEFA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDatosGenerales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPanelPrincipalEFA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDatosGenerales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -250,7 +254,16 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPanelPrincipalEFA().setVisible(true);
+                Periodo periodo = new Periodo(2020, new Date(), new Date());                
+                //Datos de la EFA
+                Ubigeo ubigeo = new  Ubigeo();
+                Ambito ambito = new Ambito("1100", "Nacional");//Regional//Local
+                TipoGobierno tipoGobierno = new TipoGobierno("1200", "Distrital");//Distrital, Provincial, Centro poblado
+                ClasificacionMef clasificacionMef = new ClasificacionMef("1300", "A");
+                OficinaDesconcentrada oficinaDesconcentrada = new OficinaDesconcentrada("2000", "OD x");                
+                Efa efa = new Efa("1000", "20425856214", "Municipalidad Distrital de Surco", ubigeo, ambito, tipoGobierno, clasificacionMef, oficinaDesconcentrada);
+        
+                new FrmDatosGenerales(periodo, efa).setVisible(true);
             }
         });
     }
@@ -266,8 +279,8 @@ public class FrmPanelPrincipalEFA extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreEfa;
     private javax.swing.JLabel lblTipoEfa;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txtAmbito;
     private javax.swing.JTextField txtAnio;
-    private javax.swing.JTextField txtAnio1;
     private javax.swing.JTextField txtNombreEfa;
     // End of variables declaration//GEN-END:variables
 }

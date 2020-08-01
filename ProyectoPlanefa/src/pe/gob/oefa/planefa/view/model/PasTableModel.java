@@ -1,34 +1,29 @@
 
-package pe.gob.oefa.planefa.programacionsupervision.model;
+package pe.gob.oefa.planefa.view.model;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import pe.gob.oefa.planefa.bo.actividad.ActividadEvaluacion;
+import pe.gob.oefa.planefa.bo.actividad.Actividad;
+import pe.gob.oefa.planefa.bo.actividad.ActividadPas;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
 
-public class EvaluacionTableModel extends AbstractTableModel {
+public class PasTableModel extends AbstractTableModel {
    
     private final String[] columnNames = {
-        "N°", "Actividad Operativa", "Tipo de evaluación", "Unidad de Medida",
+        "N°", "Año", "Sector", "Unidad de Medida",
         "Enero", "Febrero", "Marzo", "Abril", 
         "Mayo", "Junio", "Julio", "Agosto", 
         "Septiembre", "Octubre", "Noviembre", "Diciembre", 
         "Meta física anual", "Presupuesto anual"};
-    private final ArrayList<ActividadEvaluacion> actividades;
+    private final ArrayList<ActividadPas> actividades;
     
-    public EvaluacionTableModel(Planefa planefa) {
+    public PasTableModel(Planefa planefa) {
         actividades = new ArrayList<>();
-        System.out.println("Actividades:"+planefa.getActividadesEvaluacion().getProgramacion().size());
-        planefa.getActividadesEvaluacion().getProgramacion().stream().map((actividadRow) -> (ActividadEvaluacion) actividadRow).forEachOrdered((actividad) -> {
-            actividades.add(actividad);
-        });
-        
-        /*
-        for (Actividad actividadRow : planefa.getActividadesEvaluacion().getProgramacion()) {
-            ActividadEvaluacion actividad = (ActividadEvaluacion) actividadRow;
+        System.out.println("Actividades:"+planefa.getActividadesPas().getProgramacion().size());
+        for (Actividad actividadRow : planefa.getActividadesPas().getProgramacion()) {
+            ActividadPas actividad = (ActividadPas) actividadRow;
             actividades.add(actividad);
         }
-        */
     }
 
     @Override
@@ -55,11 +50,11 @@ public class EvaluacionTableModel extends AbstractTableModel {
                 value = this.actividades.get(rowIndex).getCorrelativo();
                 break;
             case 1:
-                value = this.actividades.get(rowIndex).getActividadOperativa().getNombre();
+                value = this.actividades.get(rowIndex).getAnio();
                 break;
             case 2:
-                value = this.actividades.get(rowIndex).getTipoEvaluacion().getNombre();                
-                break;                        
+                value = this.actividades.get(rowIndex).getSector().getNombre();                
+                break;            
             case 3:
                 value = this.actividades.get(rowIndex).getUnidadMedida().getNombre();
                 break;
@@ -108,7 +103,7 @@ public class EvaluacionTableModel extends AbstractTableModel {
             default:
                 value = "";
                 break;
-        }        
+        }
         return value;
     }
     

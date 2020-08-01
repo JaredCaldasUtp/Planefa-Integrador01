@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pe.gob.oefa.planefa.programacionsupervision.model;
+package pe.gob.oefa.planefa.view.model;
 
 import java.util.ArrayList;
 import java.util.List;

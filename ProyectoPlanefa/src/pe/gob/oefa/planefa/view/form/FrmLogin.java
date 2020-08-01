@@ -1,12 +1,17 @@
 
-package pe.gob.oefa.planefa.programacionsupervision.view;
+package pe.gob.oefa.planefa.view.form;
 
 import com.mongodb.Block;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import static com.mongodb.client.model.Filters.*;
 import javax.swing.JOptionPane;
+import pe.gob.oefa.planefa.bo.catalogo.Ambito;
+import pe.gob.oefa.planefa.bo.catalogo.ClasificacionMef;
+import pe.gob.oefa.planefa.bo.catalogo.Efa;
+import pe.gob.oefa.planefa.bo.catalogo.OficinaDesconcentrada;
 import pe.gob.oefa.planefa.mongodb.MongoDatabaseCliente;
+import pe.gob.oefa.planefa.resources.Constantes;
 
 public class FrmLogin extends javax.swing.JFrame {
 
@@ -185,34 +190,57 @@ public class FrmLogin extends javax.swing.JFrame {
       };
     
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-       MongoCollection<Document> collectionEfas = MongoDatabaseCliente.getColeccion("efas");
-       
-       collectionEfas.find(eq("usuario", this.txtUsuario.getText())).forEach(doc -> printBlock.apply(doc));
        
         char[] contrasenaArray = this.txtClave.getPassword();
-        StringBuffer contrasena =new StringBuffer();
+        StringBuilder contrasena =new StringBuilder();
         for (int i = 0; i < contrasenaArray.length; i++) {
             char c = contrasenaArray[i];
             contrasena.append(c);
         }
         
-       Document document =  collectionEfas.find(eq("usuario", this.txtUsuario.getText())).first();
-       if(document!=null){
-            String password = document.get("password").toString();
-            System.out.println("password:"+password);
-            
-            if(password.equalsIgnoreCase(contrasena.toString())){
-                FrmDatosGenerales frmDatosGenerales = new FrmDatosGenerales();
-                frmDatosGenerales.setVisible(true);
-                this.setVisible(false);  
-                
-                JOptionPane.showMessageDialog(this, "Bienvenido al sistema!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if(this.txtUsuario.getText().equalsIgnoreCase(Constantes.USUARIO_ADMINISTRADOR) &&
+                contrasena.toString().equalsIgnoreCase(Constantes.CLAVE_ADMINISTRADOR)){
+            FrmPanelPrincipalSEFA frmPanelPrincipalSEFA  = new FrmPanelPrincipalSEFA();
+            frmPanelPrincipalSEFA.setVisible(true);
+            this.setVisible(false);  
+        }else{
+            MongoCollection<Document> collectionEfas = MongoDatabaseCliente.getColeccion("efas");       
+            collectionEfas.find(eq("usuario", this.txtUsuario.getText())).forEach(doc -> printBlock.apply(doc));
+            Document document =  collectionEfas.find(eq("usuario", this.txtUsuario.getText())).first();
+            if(document!=null){
+                 String password = document.get("password").toString();
+                 String ruc = document.get("ruc").toString();
+                 String nombre = document.get("nombre").toString();            
+                 String ambito = ((Document)document.get("ambito")).get("nombre", String.class);            
+                 String oficinaDesconcentrada = ((Document)document.get("oficinaDesconcentrada")).get("nombre", String.class);
+                 String clasificacionMef = document.get("clasificacionMef").toString();
+
+                 System.out.println("ambito:"+ambito);            
+
+                 Efa efa = new Efa();
+                 efa.setRuc(ruc);
+                 efa.setNombre(nombre);
+                 efa.setAmbito(new Ambito("00", ambito));
+                 efa.setOficinaDesconcentrada(new OficinaDesconcentrada("00", oficinaDesconcentrada));
+                 efa.setClasificacionMef(new ClasificacionMef("00", clasificacionMef));
+                 System.out.println("efa:"+efa);
+                 System.out.println("password:"+password);
+
+                 if(password.equalsIgnoreCase(contrasena.toString())){
+                     FrmPanelPrincipalEFA frmPanelPrincipalEFA  = new FrmPanelPrincipalEFA(efa);
+                     frmPanelPrincipalEFA.setVisible(true);
+                     this.setVisible(false);  
+
+                     JOptionPane.showMessageDialog(this, "Bienvenido al sistema!", "Warning", JOptionPane.WARNING_MESSAGE);
+                 }else{
+                      JOptionPane.showMessageDialog(this, "Credenciales no ubicadas", "Warning", JOptionPane.WARNING_MESSAGE);
+                 }
             }else{
-                 JOptionPane.showMessageDialog(this, "Credenciales no ubicadas", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-       }else{
-           JOptionPane.showMessageDialog(this, "Credenciales no ubicadas", "Warning", JOptionPane.WARNING_MESSAGE);
-       }        
+                JOptionPane.showMessageDialog(this, "Credenciales no ubicadas", "Warning", JOptionPane.WARNING_MESSAGE);
+            } 
+        }
+        
+               
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     public static void main(String args[]) {

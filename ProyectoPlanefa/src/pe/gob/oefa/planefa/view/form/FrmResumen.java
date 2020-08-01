@@ -1,5 +1,5 @@
 
-package pe.gob.oefa.planefa.programacionsupervision.view;
+package pe.gob.oefa.planefa.view.form;
 
 
 import com.mongodb.Block;
@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import org.bson.Document;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
 import pe.gob.oefa.planefa.mongodb.MongoDatabaseCliente;
-import pe.gob.oefa.planefa.resources.PlanefaSingleton;
+import pe.gob.oefa.planefa.view.model.PlanefaSingleton;
 
 public class FrmResumen extends javax.swing.JFrame {
 
@@ -500,9 +500,11 @@ public class FrmResumen extends javax.swing.JFrame {
             
             collectionPlanefas.find().forEach(doc -> printBlock.apply(doc));
             
-          FrmDatosGenerales frmDatosGenerales = new FrmDatosGenerales();
-          frmDatosGenerales.setVisible(true);
-          this.setVisible(false);
+            JOptionPane.showMessageDialog(this, "Planefa enviado!", "Warning", JOptionPane.INFORMATION_MESSAGE);
+            
+            FrmPanelPrincipalEFA frmPanelPrincipalEFA  = new FrmPanelPrincipalEFA(this.planefa.getEfa());
+            frmPanelPrincipalEFA.setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
 

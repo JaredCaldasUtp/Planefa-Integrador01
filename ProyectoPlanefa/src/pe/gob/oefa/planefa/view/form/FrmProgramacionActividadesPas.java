@@ -1,15 +1,15 @@
 
-package pe.gob.oefa.planefa.programacionsupervision.view;
+package pe.gob.oefa.planefa.view.form;
 
 import javax.swing.JOptionPane;
 import pe.gob.oefa.planefa.bo.actividad.ActividadPas;
 import pe.gob.oefa.planefa.bo.catalogo.Sector;
 import pe.gob.oefa.planefa.bo.catalogo.UnidadMedida;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
-import pe.gob.oefa.planefa.programacionsupervision.model.ArrayComboBoxModel;
-import pe.gob.oefa.planefa.programacionsupervision.model.CatalogoComboBoxModel;
-import pe.gob.oefa.planefa.programacionsupervision.model.SeccionPlanefa;
-import pe.gob.oefa.planefa.resources.PlanefaSingleton;
+import pe.gob.oefa.planefa.view.model.ArrayComboBoxModel;
+import pe.gob.oefa.planefa.view.model.CatalogoComboBoxModel;
+import pe.gob.oefa.planefa.view.model.SeccionPlanefa;
+import pe.gob.oefa.planefa.view.model.PlanefaSingleton;
 import pe.gob.oefa.planefa.resources.PlanefaUtils;
 
 public class FrmProgramacionActividadesPas extends javax.swing.JFrame {

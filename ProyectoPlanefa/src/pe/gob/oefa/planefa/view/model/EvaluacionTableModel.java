@@ -1,29 +1,34 @@
 
-package pe.gob.oefa.planefa.programacionsupervision.model;
+package pe.gob.oefa.planefa.view.model;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import pe.gob.oefa.planefa.bo.actividad.Actividad;
-import pe.gob.oefa.planefa.bo.actividad.ActividadPas;
+import pe.gob.oefa.planefa.bo.actividad.ActividadEvaluacion;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
 
-public class PasTableModel extends AbstractTableModel {
+public class EvaluacionTableModel extends AbstractTableModel {
    
     private final String[] columnNames = {
-        "N°", "Año", "Sector", "Unidad de Medida",
+        "N°", "Actividad Operativa", "Tipo de evaluación", "Unidad de Medida",
         "Enero", "Febrero", "Marzo", "Abril", 
         "Mayo", "Junio", "Julio", "Agosto", 
         "Septiembre", "Octubre", "Noviembre", "Diciembre", 
         "Meta física anual", "Presupuesto anual"};
-    private final ArrayList<ActividadPas> actividades;
+    private final ArrayList<ActividadEvaluacion> actividades;
     
-    public PasTableModel(Planefa planefa) {
+    public EvaluacionTableModel(Planefa planefa) {
         actividades = new ArrayList<>();
-        System.out.println("Actividades:"+planefa.getActividadesPas().getProgramacion().size());
-        for (Actividad actividadRow : planefa.getActividadesPas().getProgramacion()) {
-            ActividadPas actividad = (ActividadPas) actividadRow;
+        System.out.println("Actividades:"+planefa.getActividadesEvaluacion().getProgramacion().size());
+        planefa.getActividadesEvaluacion().getProgramacion().stream().map((actividadRow) -> (ActividadEvaluacion) actividadRow).forEachOrdered((actividad) -> {
+            actividades.add(actividad);
+        });
+        
+        /*
+        for (Actividad actividadRow : planefa.getActividadesEvaluacion().getProgramacion()) {
+            ActividadEvaluacion actividad = (ActividadEvaluacion) actividadRow;
             actividades.add(actividad);
         }
+        */
     }
 
     @Override
@@ -50,11 +55,11 @@ public class PasTableModel extends AbstractTableModel {
                 value = this.actividades.get(rowIndex).getCorrelativo();
                 break;
             case 1:
-                value = this.actividades.get(rowIndex).getAnio();
+                value = this.actividades.get(rowIndex).getActividadOperativa().getNombre();
                 break;
             case 2:
-                value = this.actividades.get(rowIndex).getSector().getNombre();                
-                break;            
+                value = this.actividades.get(rowIndex).getTipoEvaluacion().getNombre();                
+                break;                        
             case 3:
                 value = this.actividades.get(rowIndex).getUnidadMedida().getNombre();
                 break;
@@ -103,7 +108,7 @@ public class PasTableModel extends AbstractTableModel {
             default:
                 value = "";
                 break;
-        }
+        }        
         return value;
     }
     

@@ -133,7 +133,7 @@
                           <Component id="lblNombreEfa" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblAnioPlanefa" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblTipoEfa" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtAnio1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtAmbito" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtAnio" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtNombreEfa" alignment="1" pref="592" max="32767" attributes="0"/>
                       </Group>
@@ -157,7 +157,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lblTipoEfa" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtAnio1" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txtAmbito" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace pref="53" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -199,7 +199,7 @@
                 <Property name="text" type="java.lang.String" value="Tipo de EFA *"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtAnio1">
+            <Component class="javax.swing.JTextField" name="txtAmbito">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Local"/>
                 <Property name="enabled" type="boolean" value="false"/>

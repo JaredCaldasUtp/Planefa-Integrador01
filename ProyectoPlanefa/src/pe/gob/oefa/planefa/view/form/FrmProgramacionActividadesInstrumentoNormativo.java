@@ -1,13 +1,13 @@
 
-package pe.gob.oefa.planefa.programacionsupervision.view;
+package pe.gob.oefa.planefa.view.form;
 
 import javax.swing.JOptionPane;
 import pe.gob.oefa.planefa.bo.actividad.ActividadInstrumentoNormativo;
 import pe.gob.oefa.planefa.bo.catalogo.FuncionNormada;
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
-import pe.gob.oefa.planefa.programacionsupervision.model.CatalogoComboBoxModel;
-import pe.gob.oefa.planefa.programacionsupervision.model.SeccionPlanefa;
-import pe.gob.oefa.planefa.resources.PlanefaSingleton;
+import pe.gob.oefa.planefa.view.model.CatalogoComboBoxModel;
+import pe.gob.oefa.planefa.view.model.SeccionPlanefa;
+import pe.gob.oefa.planefa.view.model.PlanefaSingleton;
 import pe.gob.oefa.planefa.resources.PlanefaUtils;
 
 public class FrmProgramacionActividadesInstrumentoNormativo extends javax.swing.JFrame {

@@ -1,4 +1,4 @@
-package pe.gob.oefa.planefa.resources;
+package pe.gob.oefa.planefa.view.model;
 
 import pe.gob.oefa.planefa.bo.planefa.Planefa;
 

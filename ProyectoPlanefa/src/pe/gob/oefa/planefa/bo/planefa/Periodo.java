@@ -10,6 +10,10 @@ public class Periodo{
     private Date plazoRemisionInicial;
     private Date plazoRemisionFinal;
 
+    public Periodo(Integer anio) {        
+        this.anio = anio;
+    }
+    
     public Periodo(Integer anio, Date plazoRemisionInicial, Date plazoRemisionFinal) {        
         this.anio = anio;
         this.plazoRemisionInicial = plazoRemisionInicial;

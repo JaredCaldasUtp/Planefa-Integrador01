@@ -12,6 +12,7 @@ public class Efa {
     private ClasificacionMef clasificacionMef;
     private OficinaDesconcentrada oficinaDesconcentrada;
 
+    public Efa(){}
     public Efa(String codigo, String ruc, String nombre, Ubigeo ubigeo, Ambito ambito, TipoGobierno tipoGobierno, ClasificacionMef clasificacionMef, OficinaDesconcentrada oficinaDesconcentrada) {
         this.codigo = codigo;
         this.ruc = ruc;

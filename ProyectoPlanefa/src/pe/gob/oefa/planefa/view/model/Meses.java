@@ -1,5 +1,5 @@
 
-package pe.gob.oefa.planefa.programacionsupervision.model;
+package pe.gob.oefa.planefa.view.model;
 
 public enum Meses {
     Enero("Enero"),
